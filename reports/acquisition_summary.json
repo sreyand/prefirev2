@@ -1,0 +1,24 @@
+{
+  "total_records": 2661383,
+  "valid_conus_containment_records": 1651130,
+  "min_year": 1992,
+  "max_year": 2024,
+  "missing_containment_dates": 997216,
+  "invalid_timed_intervals_excluded": 0,
+  "timed_durations": 1508315,
+  "enriched_records": 1651130,
+  "weather_centroids": 25,
+  "weather_distance_km_p50": 166.047913762028,
+  "weather_distance_km_p95": 348.3696746966607,
+  "missing_cost_records": 70620,
+  "cost_max_year": 2023,
+  "limitations": [
+    "Containment is not fire-out; no FIREOUTDATETIME alias is created.",
+    "Source timestamps have unspecified timezones; do not relabel as UTC.",
+    "25-centroid ERA5 weather is a regional proxy, not local fire weather.",
+    "Centroid DEM elevation used by Open-Meteo is not fire-site elevation or slope.",
+    "2024 Census place centroids are a static proximity proxy, not historical WUI or policy.",
+    "Annual national federal spending cannot be assigned as individual fire cost.",
+    "Missing containment records affect representativeness; see annual coverage report."
+  ]
+}

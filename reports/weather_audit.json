@@ -1,0 +1,61 @@
+{
+  "status": "complete",
+  "paired_fires": 360,
+  "discovery_days": 36,
+  "years": [
+    1992,
+    1996,
+    2000,
+    2004,
+    2008,
+    2012,
+    2016,
+    2020,
+    2024
+  ],
+  "original_distance_km_median": 180.51167773120514,
+  "near_fire_distance_km_median": 10.014987789562475,
+  "near_fire_distance_km_p95": 15.39054409150249,
+  "paired_variable_differences": {
+    "temperature_2m_max": {
+      "median_absolute_difference": 2.1000000000000014,
+      "p90_absolute_difference": 8.64000000000001,
+      "mean_signed_centroid_minus_near_fire": -1.2294444444444446
+    },
+    "wind_speed_10m_max": {
+      "median_absolute_difference": 2.6000000000000005,
+      "p90_absolute_difference": 10.21,
+      "mean_signed_centroid_minus_near_fire": -1.1980555555555557
+    },
+    "precipitation_sum": {
+      "median_absolute_difference": 0.0,
+      "p90_absolute_difference": 2.2100000000000026,
+      "mean_signed_centroid_minus_near_fire": 0.2122222222222222
+    },
+    "vapour_pressure_deficit_max": {
+      "median_absolute_difference": 0.32500000000000007,
+      "p90_absolute_difference": 1.4860000000000015,
+      "mean_signed_centroid_minus_near_fire": -0.11336111111111113
+    },
+    "ANTECEDENT_PRECIP_30D_MM": {
+      "median_absolute_difference": 13.699999999999989,
+      "p90_absolute_difference": 54.400000000000006,
+      "mean_signed_centroid_minus_near_fire": 5.416944444444444
+    }
+  },
+  "selection": "Fixed-seed nine-year x four-quarter day sample, up to two cases per acreage bin then fill to ten per day; outcome-complete cohort only.",
+  "scope": "A paired weather diagnostic, not a population-weighted national error estimate; these data do not replace the original models' features.",
+  "same_source": "Both use ERA5/Open-Meteo with GMT days and the same daily definitions. Near-fire coordinates select local ERA5 cells; still approximately25km reanalysis, not observed local fireground weather.",
+  "caveats": [
+    "Only36 discovery days; clustered and size-enriched sample.",
+    "Requested elevations differ by location; this diagnostic measures the complete centroid proxy difference, not pure horizontal distance alone.",
+    "Calendar-day alignment to unknown source timezones remains approximate.",
+    "Existing fitted models still use the25-centroid features; applying point values to those models without retraining is not justified."
+  ],
+  "validation": {
+    "same_model_and_units": true,
+    "paired_identifiers_unique": true,
+    "all_expected_days_present": true,
+    "no_missing_probe_weather": true
+  }
+}

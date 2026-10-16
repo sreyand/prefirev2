@@ -1,0 +1,567 @@
+{
+  "target": "CONTAINMENT_DAYS_DATE_ONLY",
+  "threshold": "more than 3 calendar-date days",
+  "chronological_splits": {
+    "training": {
+      "start_year": 1992,
+      "end_year": 2014,
+      "eligible_rows": 1048543,
+      "used_rows": 200000,
+      "sampled": true,
+      "target_base_rate": 0.033852688921675124,
+      "duration_resolution_counts": {
+        "wall_clock_minutes_timezone_unspecified": 953041,
+        "calendar_days": 95502
+      }
+    },
+    "calibration": {
+      "start_year": 2015,
+      "end_year": 2017,
+      "eligible_rows": 190766,
+      "used_rows": 190766,
+      "sampled": false,
+      "target_base_rate": 0.04351404338299278,
+      "duration_resolution_counts": {
+        "wall_clock_minutes_timezone_unspecified": 177781,
+        "calendar_days": 12985
+      }
+    },
+    "validation": {
+      "start_year": 2018,
+      "end_year": 2019,
+      "eligible_rows": 107926,
+      "used_rows": 107926,
+      "sampled": false,
+      "target_base_rate": 0.05020106369178882,
+      "duration_resolution_counts": {
+        "wall_clock_minutes_timezone_unspecified": 102551,
+        "calendar_days": 5375
+      }
+    },
+    "test": {
+      "start_year": 2020,
+      "end_year": 2024,
+      "eligible_rows": 303895,
+      "used_rows": 250000,
+      "sampled": true,
+      "target_base_rate": 0.03476200661412659,
+      "duration_resolution_counts": {
+        "wall_clock_minutes_timezone_unspecified": 274942,
+        "calendar_days": 28953
+      }
+    }
+  },
+  "test_metrics": {
+    "rows": 250000,
+    "target_base_rate": 0.034512,
+    "same_calendar_day_fraction": 0.870912,
+    "risk_median_threshold_disagreement_fraction": 0.014164,
+    "roc_auc": 0.8269281856929908,
+    "average_precision": 0.289485454049792,
+    "brier_score": 0.031740721310713996,
+    "raw_brier_score": 0.02962652151976691,
+    "baseline_brier_score": 0.03340195864106928,
+    "baseline_average_precision": 0.034512,
+    "training_rate_baseline_brier_score": 0.033320971139999996,
+    "log_loss": 0.12827496574041788,
+    "expected_calibration_error": 0.0169293936812751,
+    "median_mae_days": 0.6697016984710773,
+    "baseline_median_mae_days": 0.730528,
+    "interval_coverage": 0.922324,
+    "nominal_interval_coverage": 0.8,
+    "mean_interval_width_days": 1.005940330326418,
+    "baseline_interval_coverage": 0.939748,
+    "quantile_crossing_fraction_before_sorting": 0.0285,
+    "calibration_bins": [
+      {
+        "bin_low": 0.0,
+        "bin_high": 0.1,
+        "count": 231041,
+        "mean_predicted_probability": 0.011877032453715953,
+        "observed_fraction_over_3_days": 0.018663354123294135
+      },
+      {
+        "bin_low": 0.1,
+        "bin_high": 0.2,
+        "count": 7475,
+        "mean_predicted_probability": 0.13934836393758487,
+        "observed_fraction_over_3_days": 0.1240133779264214
+      },
+      {
+        "bin_low": 0.2,
+        "bin_high": 0.3,
+        "count": 2796,
+        "mean_predicted_probability": 0.24494054106687257,
+        "observed_fraction_over_3_days": 0.1834763948497854
+      },
+      {
+        "bin_low": 0.3,
+        "bin_high": 0.4,
+        "count": 1826,
+        "mean_predicted_probability": 0.3469107057345802,
+        "observed_fraction_over_3_days": 0.21139101861993428
+      },
+      {
+        "bin_low": 0.4,
+        "bin_high": 0.5,
+        "count": 1393,
+        "mean_predicted_probability": 0.44932544366002725,
+        "observed_fraction_over_3_days": 0.2613065326633166
+      },
+      {
+        "bin_low": 0.5,
+        "bin_high": 0.6,
+        "count": 1157,
+        "mean_predicted_probability": 0.5480604305508152,
+        "observed_fraction_over_3_days": 0.30682800345721695
+      },
+      {
+        "bin_low": 0.6,
+        "bin_high": 0.7,
+        "count": 1103,
+        "mean_predicted_probability": 0.6522368272849964,
+        "observed_fraction_over_3_days": 0.3381686310063463
+      },
+      {
+        "bin_low": 0.7,
+        "bin_high": 0.8,
+        "count": 1401,
+        "mean_predicted_probability": 0.7496487197832851,
+        "observed_fraction_over_3_days": 0.29050678087080656
+      },
+      {
+        "bin_low": 0.8,
+        "bin_high": 0.9,
+        "count": 1200,
+        "mean_predicted_probability": 0.8452067508420008,
+        "observed_fraction_over_3_days": 0.3591666666666667
+      },
+      {
+        "bin_low": 0.9,
+        "bin_high": 1.0,
+        "count": 608,
+        "mean_predicted_probability": 0.9482709119114316,
+        "observed_fraction_over_3_days": 0.9210526315789473
+      }
+    ],
+    "p10_days_pinball_loss": 0.07302473404551385,
+    "baseline_p10_days_pinball_loss": 0.07305279999999999,
+    "fraction_at_or_below_p10_days": 0.870912,
+    "p50_days_pinball_loss": 0.33485084923553865,
+    "baseline_p50_days_pinball_loss": 0.365264,
+    "fraction_at_or_below_p50_days": 0.877572,
+    "p90_days_pinball_loss": 0.4459722411017239,
+    "baseline_p90_days_pinball_loss": 0.6283872,
+    "fraction_at_or_below_p90_days": 0.922808
+  },
+  "validation_metrics": {
+    "rows": 107926,
+    "target_base_rate": 0.05020106369178882,
+    "same_calendar_day_fraction": 0.8512777273316903,
+    "risk_median_threshold_disagreement_fraction": 0.02150547597427867,
+    "roc_auc": 0.9003001546607899,
+    "average_precision": 0.5228476073170221,
+    "brier_score": 0.032056726860486336,
+    "raw_brier_score": 0.03348946328385842,
+    "baseline_brier_score": 0.04772563313661203,
+    "baseline_average_precision": 0.05020106369178882,
+    "training_rate_baseline_brier_score": 0.04793407884380593,
+    "log_loss": 0.12407794679252801,
+    "expected_calibration_error": 0.00678606499472706,
+    "median_mae_days": 0.8432319248800143,
+    "baseline_median_mae_days": 0.9155161870170302,
+    "interval_coverage": 0.9189259307303153,
+    "nominal_interval_coverage": 0.8,
+    "mean_interval_width_days": 1.0671762081195177,
+    "baseline_interval_coverage": 0.9183699942553231,
+    "quantile_crossing_fraction_before_sorting": 0.022589552100513315,
+    "calibration_bins": [
+      {
+        "bin_low": 0.0,
+        "bin_high": 0.1,
+        "count": 98453,
+        "mean_predicted_probability": 0.012653092285787381,
+        "observed_fraction_over_3_days": 0.01783592170883569
+      },
+      {
+        "bin_low": 0.1,
+        "bin_high": 0.2,
+        "count": 3170,
+        "mean_predicted_probability": 0.13788460922874202,
+        "observed_fraction_over_3_days": 0.15173501577287066
+      },
+      {
+        "bin_low": 0.2,
+        "bin_high": 0.3,
+        "count": 1261,
+        "mean_predicted_probability": 0.2463254245467234,
+        "observed_fraction_over_3_days": 0.26883425852498016
+      },
+      {
+        "bin_low": 0.3,
+        "bin_high": 0.4,
+        "count": 1021,
+        "mean_predicted_probability": 0.34771890733243593,
+        "observed_fraction_over_3_days": 0.3604309500489716
+      },
+      {
+        "bin_low": 0.4,
+        "bin_high": 0.5,
+        "count": 825,
+        "mean_predicted_probability": 0.4503931807288978,
+        "observed_fraction_over_3_days": 0.4303030303030303
+      },
+      {
+        "bin_low": 0.5,
+        "bin_high": 0.6,
+        "count": 821,
+        "mean_predicted_probability": 0.54949650834558,
+        "observed_fraction_over_3_days": 0.53836784409257
+      },
+      {
+        "bin_low": 0.6,
+        "bin_high": 0.7,
+        "count": 795,
+        "mean_predicted_probability": 0.6532082828156242,
+        "observed_fraction_over_3_days": 0.5861635220125786
+      },
+      {
+        "bin_low": 0.7,
+        "bin_high": 0.8,
+        "count": 850,
+        "mean_predicted_probability": 0.7501379751561111,
+        "observed_fraction_over_3_days": 0.7270588235294118
+      },
+      {
+        "bin_low": 0.8,
+        "bin_high": 0.9,
+        "count": 572,
+        "mean_predicted_probability": 0.8436296873121226,
+        "observed_fraction_over_3_days": 0.7937062937062938
+      },
+      {
+        "bin_low": 0.9,
+        "bin_high": 1.0,
+        "count": 158,
+        "mean_predicted_probability": 0.9409763867833767,
+        "observed_fraction_over_3_days": 0.879746835443038
+      }
+    ],
+    "p10_days_pinball_loss": 0.0915628571675774,
+    "baseline_p10_days_pinball_loss": 0.09155161870170303,
+    "fraction_at_or_below_p10_days": 0.8512777273316903,
+    "p50_days_pinball_loss": 0.42161596244000715,
+    "baseline_p50_days_pinball_loss": 0.4577580935085151,
+    "fraction_at_or_below_p50_days": 0.8588384633915831,
+    "p90_days_pinball_loss": 0.5130882129553316,
+    "baseline_p90_days_pinball_loss": 0.7752422956470173,
+    "fraction_at_or_below_p90_days": 0.9202787094861293
+  },
+  "calibration_bins": [
+    {
+      "bin_low": 0.0,
+      "bin_high": 0.1,
+      "count": 231041,
+      "mean_predicted_probability": 0.011877032453715953,
+      "observed_fraction_over_3_days": 0.018663354123294135
+    },
+    {
+      "bin_low": 0.1,
+      "bin_high": 0.2,
+      "count": 7475,
+      "mean_predicted_probability": 0.13934836393758487,
+      "observed_fraction_over_3_days": 0.1240133779264214
+    },
+    {
+      "bin_low": 0.2,
+      "bin_high": 0.3,
+      "count": 2796,
+      "mean_predicted_probability": 0.24494054106687257,
+      "observed_fraction_over_3_days": 0.1834763948497854
+    },
+    {
+      "bin_low": 0.3,
+      "bin_high": 0.4,
+      "count": 1826,
+      "mean_predicted_probability": 0.3469107057345802,
+      "observed_fraction_over_3_days": 0.21139101861993428
+    },
+    {
+      "bin_low": 0.4,
+      "bin_high": 0.5,
+      "count": 1393,
+      "mean_predicted_probability": 0.44932544366002725,
+      "observed_fraction_over_3_days": 0.2613065326633166
+    },
+    {
+      "bin_low": 0.5,
+      "bin_high": 0.6,
+      "count": 1157,
+      "mean_predicted_probability": 0.5480604305508152,
+      "observed_fraction_over_3_days": 0.30682800345721695
+    },
+    {
+      "bin_low": 0.6,
+      "bin_high": 0.7,
+      "count": 1103,
+      "mean_predicted_probability": 0.6522368272849964,
+      "observed_fraction_over_3_days": 0.3381686310063463
+    },
+    {
+      "bin_low": 0.7,
+      "bin_high": 0.8,
+      "count": 1401,
+      "mean_predicted_probability": 0.7496487197832851,
+      "observed_fraction_over_3_days": 0.29050678087080656
+    },
+    {
+      "bin_low": 0.8,
+      "bin_high": 0.9,
+      "count": 1200,
+      "mean_predicted_probability": 0.8452067508420008,
+      "observed_fraction_over_3_days": 0.3591666666666667
+    },
+    {
+      "bin_low": 0.9,
+      "bin_high": 1.0,
+      "count": 608,
+      "mean_predicted_probability": 0.9482709119114316,
+      "observed_fraction_over_3_days": 0.9210526315789473
+    }
+  ],
+  "baselines": {
+    "training_base_rate": 0.03429,
+    "calibration_base_rate": 0.04351404338299278,
+    "training_median_days": 0.0,
+    "training_duration_quantiles": {
+      "p10_days": 0.0,
+      "p50_days": 0.0,
+      "p90_days": 1.0
+    }
+  },
+  "training": {
+    "classifier_iterations": 140,
+    "quantile_iterations": {
+      "0.1": 15,
+      "0.5": 140,
+      "0.9": 140
+    },
+    "settings": {
+      "max_iter": 140,
+      "learning_rate": 0.07,
+      "max_leaf_nodes": 31,
+      "min_samples_leaf": 80,
+      "l2_regularization": 5,
+      "categorical_features": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        true,
+        true,
+        true
+      ],
+      "early_stopping": true,
+      "n_iter_no_change": 15,
+      "random_state": 42
+    }
+  },
+  "checks": {
+    "finite_bounded_predictions": true,
+    "ordered_quantiles": true,
+    "unknown_category_handled": true,
+    "extrapolation_warning": true,
+    "whole_calendar_day_target": true,
+    "chronological_holdouts_separated": true,
+    "serialized_round_trip": true,
+    "synthetic_zero_tie_regression_passed": true,
+    "metadata_only_serialized_round_trip": true
+  },
+  "limitations": [
+    "Retrospective conditional associations, not causal effects or a dispatch-time forecast.",
+    "Final acreage and discovery-day maximum weather are unavailable at ignition; final acreage may itself reflect suppression outcomes.",
+    "Calendar-date discovery-to-containment days are the outcome. More than three calendar days is not an exact 72-hour threshold, fire-out time, or verified initial-attack failure.",
+    "The selected cohort requires valid reported containment dates and 0\u2013365 calendar-date days. Missing-outcome fires, excluded longer events, and reporting differences can bias results.",
+    "Observed concurrency counts only the outcome-complete cohort, includes the focal fire, and is reconstructed using later reported containment dates. It is not measured crew availability or a census of all active fires.",
+    "Weather uses 25 representative grid centroids, approximately 166 km from fires at the median and 348 km at the 95th percentile in this cohort. It is regional context rather than local fireground weather.",
+    "Place-centroid distance is a proximity proxy rather than a WUI, road-access, or response-time measurement.",
+    "P10\u2013P90 is a conditional outcome interval, not a confidence interval or a guaranteed 80% coverage interval. Check held-out coverage before interpreting it.",
+    "Changing one simulator input holds the others fixed; combinations can be unrealistic, and correlations do not establish intervention effects.",
+    "After the training/synthetic-verified numerical tie correction, P50 varies across the fitting sample. Exploratory test median MAE is 0.669702 days versus 0.730528 for the constant-zero baseline.",
+    "P10\u2013P90 test coverage is 92.23%, versus nominal 80%; the discrete, zero-heavy interval is not calibrated to 80% coverage.",
+    "The predeclared Platt adjustment improved validation Brier but worsened 2020\u20132024 test Brier (0.031741 adjusted versus 0.029627 raw). The original calibrated estimator is retained; test results were not used to select a replacement.",
+    "The test era had already been inspected before a synthetic-proven quantile tie failure was corrected. Final repeated test scores are exploratory, not a fresh confirmatory evaluation."
+  ],
+  "findings": [
+    "After the training/synthetic-verified numerical tie correction, P50 varies across the fitting sample. Exploratory test median MAE is 0.669702 days versus 0.730528 for the constant-zero baseline.",
+    "P10\u2013P90 test coverage is 92.23%, versus nominal 80%; the discrete, zero-heavy interval is not calibrated to 80% coverage.",
+    "The predeclared Platt adjustment improved validation Brier but worsened 2020\u20132024 test Brier (0.031741 adjusted versus 0.029627 raw). The original calibrated estimator is retained; test results were not used to select a replacement.",
+    "The test era had already been inspected before a synthetic-proven quantile tie failure was corrected. Final repeated test scores are exploratory, not a fresh confirmatory evaluation."
+  ],
+  "metadata": {
+    "created_at_utc": "2026-10-15T00:20:45.605617+00:00",
+    "python_version": "3.14.7",
+    "sklearn_version": "1.9.1",
+    "source_file": "processed_fires.parquet",
+    "source_rows": 1651130,
+    "eligible_rows": 1651130,
+    "source_file_bytes": 207458019,
+    "chronological_splits": {
+      "training": {
+        "start_year": 1992,
+        "end_year": 2014,
+        "eligible_rows": 1048543,
+        "used_rows": 200000,
+        "sampled": true,
+        "target_base_rate": 0.033852688921675124,
+        "duration_resolution_counts": {
+          "wall_clock_minutes_timezone_unspecified": 953041,
+          "calendar_days": 95502
+        }
+      },
+      "calibration": {
+        "start_year": 2015,
+        "end_year": 2017,
+        "eligible_rows": 190766,
+        "used_rows": 190766,
+        "sampled": false,
+        "target_base_rate": 0.04351404338299278,
+        "duration_resolution_counts": {
+          "wall_clock_minutes_timezone_unspecified": 177781,
+          "calendar_days": 12985
+        }
+      },
+      "validation": {
+        "start_year": 2018,
+        "end_year": 2019,
+        "eligible_rows": 107926,
+        "used_rows": 107926,
+        "sampled": false,
+        "target_base_rate": 0.05020106369178882,
+        "duration_resolution_counts": {
+          "wall_clock_minutes_timezone_unspecified": 102551,
+          "calendar_days": 5375
+        }
+      },
+      "test": {
+        "start_year": 2020,
+        "end_year": 2024,
+        "eligible_rows": 303895,
+        "used_rows": 250000,
+        "sampled": true,
+        "target_base_rate": 0.03476200661412659,
+        "duration_resolution_counts": {
+          "wall_clock_minutes_timezone_unspecified": 274942,
+          "calendar_days": 28953
+        }
+      }
+    },
+    "seed": 42,
+    "max_iterations": 140,
+    "no_year_feature": true,
+    "internal_early_stopping": "Random 10% validation wholly inside the pre-2015 fitting sample.",
+    "quantiles": "Independently fitted log1p-day quantiles, inverse transformed, clipped to 0\u2013365, and sorted per record.",
+    "quantile_training_tie_break_amplitude_log_days": 1e-06,
+    "calibration": "Platt logistic calibration on the logit of raw probability; uses 2015\u20132017 only.",
+    "training_feature_missing_fraction": {
+      "LOG_ACRES": 0.0,
+      "LATITUDE": 0.0,
+      "LONGITUDE": 0.0,
+      "DAY_OF_YEAR": 0.0,
+      "OBSERVED_UNCONTAINED_FIRES": 0.0,
+      "vapour_pressure_deficit_max": 0.0,
+      "wind_speed_10m_max": 0.0,
+      "ANTECEDENT_PRECIP_30D_MM": 0.0,
+      "DISTANCE_TO_PLACE_CENTROID_KM": 0.0
+    },
+    "limitations": [
+      "Retrospective conditional associations, not causal effects or a dispatch-time forecast.",
+      "Final acreage and discovery-day maximum weather are unavailable at ignition; final acreage may itself reflect suppression outcomes.",
+      "Calendar-date discovery-to-containment days are the outcome. More than three calendar days is not an exact 72-hour threshold, fire-out time, or verified initial-attack failure.",
+      "The selected cohort requires valid reported containment dates and 0\u2013365 calendar-date days. Missing-outcome fires, excluded longer events, and reporting differences can bias results.",
+      "Observed concurrency counts only the outcome-complete cohort, includes the focal fire, and is reconstructed using later reported containment dates. It is not measured crew availability or a census of all active fires.",
+      "Weather uses 25 representative grid centroids, approximately 166 km from fires at the median and 348 km at the 95th percentile in this cohort. It is regional context rather than local fireground weather.",
+      "Place-centroid distance is a proximity proxy rather than a WUI, road-access, or response-time measurement.",
+      "P10\u2013P90 is a conditional outcome interval, not a confidence interval or a guaranteed 80% coverage interval. Check held-out coverage before interpreting it.",
+      "Changing one simulator input holds the others fixed; combinations can be unrealistic, and correlations do not establish intervention effects.",
+      "After the training/synthetic-verified numerical tie correction, P50 varies across the fitting sample. Exploratory test median MAE is 0.669702 days versus 0.730528 for the constant-zero baseline.",
+      "P10\u2013P90 test coverage is 92.23%, versus nominal 80%; the discrete, zero-heavy interval is not calibrated to 80% coverage.",
+      "The predeclared Platt adjustment improved validation Brier but worsened 2020\u20132024 test Brier (0.031741 adjusted versus 0.029627 raw). The original calibrated estimator is retained; test results were not used to select a replacement.",
+      "The test era had already been inspected before a synthetic-proven quantile tie failure was corrected. Final repeated test scores are exploratory, not a fresh confirmatory evaluation."
+    ],
+    "duration_model_diagnostics": {
+      "fit_sample_rows": 200000,
+      "fit_sample_same_calendar_day_fraction": 0.83208,
+      "fit_sample_median_days": 0.0,
+      "native_training_prediction_ranges": {
+        "p10_days": {
+          "min": 0.0,
+          "max": 0.28798513983544427,
+          "constant": false
+        },
+        "p50_days": {
+          "min": 0.0,
+          "max": 101.4528877114156,
+          "constant": false
+        },
+        "p90_days": {
+          "min": 0.0,
+          "max": 197.0489558084105,
+          "constant": false
+        }
+      }
+    },
+    "evaluation_findings": [
+      "After the training/synthetic-verified numerical tie correction, P50 varies across the fitting sample. Exploratory test median MAE is 0.669702 days versus 0.730528 for the constant-zero baseline.",
+      "P10\u2013P90 test coverage is 92.23%, versus nominal 80%; the discrete, zero-heavy interval is not calibrated to 80% coverage.",
+      "The predeclared Platt adjustment improved validation Brier but worsened 2020\u20132024 test Brier (0.031741 adjusted versus 0.029627 raw). The original calibrated estimator is retained; test results were not used to select a replacement.",
+      "The test era had already been inspected before a synthetic-proven quantile tie failure was corrected. Final repeated test scores are exploratory, not a fresh confirmatory evaluation."
+    ],
+    "quantile_numerical_correction": {
+      "reason": "At a tied zero initialization, native pinball boosting stalled at zero despite a supported nonzero conditional median.",
+      "synthetic_rows": 5000,
+      "synthetic_zero_fraction": 0.8,
+      "supported_positive_subgroup_rows": 1000,
+      "min_samples_leaf": 80,
+      "true_conditional_medians_days": [
+        0.0,
+        10.0
+      ],
+      "original_predicted_medians_days": [
+        0.0,
+        0.0
+      ],
+      "corrected_predicted_medians_days": [
+        0.0,
+        9.998978996758222
+      ],
+      "correction": "Fixed-seed uniform numerical tie breaking of \u00b11e-6 added only to log1p-day fitting targets; original calendar-day outcomes remain unchanged for all evaluation.",
+      "model_settings_unchanged": true
+    },
+    "test_evaluation_status": "exploratory_repeat_after_synthetic_verified_numerical_fix",
+    "synthetic_quantile_regression_check": {
+      "passed": true,
+      "rows": 5000,
+      "positive_subgroup_rows": 1000,
+      "min_samples_leaf": 80,
+      "true_medians_days": [
+        0.0,
+        10.0
+      ],
+      "original_medians_days": [
+        0.0,
+        0.0
+      ],
+      "corrected_medians_days": [
+        0.0,
+        9.998978996758222
+      ]
+    },
+    "scenario_threshold_tolerance_days": 0.0001
+  }
+}

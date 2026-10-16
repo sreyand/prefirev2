@@ -1,0 +1,11 @@
+{
+  "status": "passed",
+  "enriched_records": 1651130,
+  "weather_rows": 302125,
+  "weather_locations": 25,
+  "source_checksums_verified": 182,
+  "raw_fire_records": 2661383,
+  "missing_cost_years": [
+    2024
+  ]
+}

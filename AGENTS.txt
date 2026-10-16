@@ -1,0 +1,240 @@
+Save the block below as `PREFIRE_AGENT_PLAN.txt`. It contains zero code—only the architectural blueprints, API endpoints, data schemas, mathematical definitions, and acceptance criteria for **Grok Bot** and **Codex** to execute autonomously.
+
+```text
+================================================================================
+PREFIRE V2: MASTER MULTI-AGENT EXECUTION PLAN
+OBJECTIVE: Determine whether US wildfire suppression is truly becoming less
+effective regardless of fire severity, or if apparent slowdowns are driven by
+environmental difficulty, policy shifts, and concurrent resource saturation.
+================================================================================
+
+--------------------------------------------------------------------------------
+SECTION 1: GROK BOT AGENT SPECIFICATION (MULTI-SOURCE DATA ACQUISITION)
+--------------------------------------------------------------------------------
+
+1.1 AGENT ROLE & CONSTRAINTS
+- Role: Autonomous Data Acquisition & Enrichment Agent.
+- Time Budget: Complete all downloads, API queries, and schema validations
+  within 15 minutes.
+- Scraping Rule: Prefer REST APIs, bulk CSV/GeoPackage downloads, and structured
+  HTML tables over headless browser automation. Use multi-threaded pagination
+  for REST endpoints.
+
+1.2 TARGET DATASETS TO ACQUIRE
+Grok Bot must collect and standardize four distinct datasets spanning 1990–2026:
+
+[DATASET 1: Core Wildfire Occurrences — USFS FOFL]
+- Source: USDA Forest Service Enterprise Data Warehouse (EDW) / ArcGIS Hub.
+- Primary REST Endpoint:
+  https://apps.fs.usda.gov/arcx/rest/services/EDW/EDW_FireOccurrence_01/MapServer/0/query
+- Backup Bulk Download:
+  https://data.fs.usda.gov/geodata/edw/edw_resources/shp/S_USA.Fire_Occurrence.zip
+- Filter Criteria: Fire Year >= 1990, Total Acres > 0, non-null Discovery and
+  Fire Out timestamps, valid NAD83 Latitude (24.0 to 50.0) and Longitude
+  (-125.0 to -66.0).
+- Required Fields:
+  * FIREYEAR (Integer)
+  * DISCOVERYDATETIME (UTC Timestamp)
+  * FIREOUTDATETIME (UTC Timestamp)
+  * TOTALACRES (Float)
+  * STATCAUSE (String/Code — to distinguish Lightning vs. Human ignitions)
+  * LATDD83 (Float)
+  * LONGDD83 (Float)
+  * STATE / USFS REGION (String, if present)
+
+[DATASET 2: Historical Fire Weather, Aridity & Terrain — Open-Meteo ERA5]
+- Purpose: Acreage alone does not measure physical fire difficulty. A 50-acre
+  fire in high wind, extreme atmospheric aridity, and steep terrain is much
+  harder to suppress than a 50-acre fire in mild conditions.
+- Source: Open-Meteo Historical Weather Archive API (ERA5 Reanalysis).
+- Endpoint: https://archive-api.open-meteo.com/v1/archive
+- Spatial Strategy (To Avoid Rate Limits):
+  Do NOT query Open-Meteo 500,000 individual times. Instead, group fire
+  coordinates into 15 to 25 representative spatial grid centroids (or 2-degree
+  lat/lon grid cells) covering the primary US fire ecoregions, and fetch daily
+  historical series from 1990-01-01 to present for each centroid.
+- Required Daily Variables & Metadata:
+  * temperature_2m_max (Daily Max Temperature in Celsius)
+  * wind_speed_10m_max (Daily Max Wind Speed in km/h)
+  * precipitation_sum (Daily Precipitation in mm — used to compute 30-day
+    rolling antecedent rainfall / drought deficit)
+  * vapour_pressure_deficit_max (Daily Max VPD in kPa — primary physical driver
+    of fuel flammability and fire spread rate)
+  * elevation (Meters above sea level, returned in the API metadata payload)
+
+[DATASET 3: Federal Suppression Costs & Operational Load — NIFC]
+- Purpose: Test financial and resource efficiency (whether spending billions
+  more per year is translating into faster containment).
+- Source: National Interagency Fire Center (NIFC) Historical Wildland Fire
+  Statistics & Suppression Cost tables (https://www.nifc.gov/fire-information/statistics).
+- Required Annual Variables (1990–present):
+  * Year
+  * Total Federal Suppression Expenditure (USFS + DOI combined, in Nominal USD
+    and CPI-adjusted Real USD)
+  * Total National Wildland Fires and Acres reported by NIFC (for cross-check)
+
+[DATASET 4: Human Proximity / Wildland-Urban Interface (WUI) Context]
+- Purpose: Fires near towns and roads receive aggressive immediate aerial and
+  ground attack; remote wilderness fires are frequently monitored under resource-
+  benefit ("let-burn") policies.
+- Source: Derive distance from each fire's (LATDD83, LONGDD83) to the nearest
+  populated place / major urban center using a lightweight US Census Gazetteer
+  city/county centroid file or Natural Earth populated places table.
+
+1.3 DATA HANDOFF CONTRACT (GROK BOT -> CODEX)
+Grok Bot must save all outputs into the `data/` directory using Apache Parquet
+format (`pyarrow` engine) and verify the following before signaling completion:
+1. `data/raw_fofl.parquet`: Cleaned fire records joined with nearest-grid daily
+   ERA5 weather variables, terrain elevation, distance to nearest populated
+   center, and annual NIFC suppression budget.
+2. Validation Checks:
+   - Row count >= 150,000 valid fire occurrences.
+   - Datetime columns standardized to ISO UTC timestamps.
+   - Zero NaN values in core coordinates, acreage, or discovery/out dates.
+
+
+--------------------------------------------------------------------------------
+SECTION 2: CODEX AGENT SPECIFICATION (PIPELINE, MODELING & DASHBOARD)
+--------------------------------------------------------------------------------
+
+2.1 AGENT ROLE & ARCHITECTURE
+- Role: Autonomous Data Science, Causal Inference & Visualization Agent.
+- Objective: Build a modular Python application that ingests `data/raw_fofl.parquet`
+  (with a built-in synthetic bootstrap generator so development and testing can
+  run before Grok Bot finishes downloading) and launches an interactive dashboard.
+- Target Directory Structure:
+  * `requirements.txt` (Dependencies: pandas, numpy, pyarrow, scikit-learn,
+    scipy, statsmodels, plotly, pydeck, streamlit, joblib)
+  * `src/clean_and_engineer.py` (Data cleaning and confounder feature creation)
+  * `src/counterfactual_model.py` (Baseline ML training and residual scoring)
+  * `src/statistical_tests.py` (Quantile regressions and regime trend tests)
+  * `app.py` (Interactive Streamlit + Plotly + PyDeck web application)
+
+2.2 PHASE 1: CONFOUNDER ISOLATION & FEATURE ENGINEERING (`src/clean_and_engineer.py`)
+To scientifically test if suppression is getting worse regardless of severity,
+Codex must engineer five strict control variables:
+
+1. Target Metrics:
+   - `SUPP_DAYS`: Exact duration in fractional days between Discovery and Out
+     timestamps (filtered to valid range 0 to 365 days).
+   - `IA_ESCAPED`: Binary indicator of Initial Attack failure (1 if `SUPP_DAYS > 3`
+     or `TOTALACRES > 100`, else 0).
+
+2. Control 1 — Fixed Fire Size Stratification (`SIZE_BIN`):
+   - Categorize `TOTALACRES` into 5 strict buckets so size skew cannot distort
+     temporal comparisons:
+     * Micro (< 1 acre)
+     * Small (1 to 10 acres)
+     * Medium (10 to 100 acres)
+     * Large (100 to 1,000 acres)
+     * Megafire (> 1,000 acres)
+
+3. Control 2 — Policy & Tactical Split (`CAUSE_TYPE` & `WUI_PROXIMITY`):
+   - Classify `STATCAUSE` into `Human (Aggressive Suppression)` vs.
+     `Lightning/Natural (Often Managed for Ecological Benefit)`.
+   - Classify distance to populated centers into `WUI / Accessible` vs.
+     `Remote Backcountry`.
+
+4. Control 3 — Vectorized Sweep-Line Concurrency (`CONCURRENT_FIRES`):
+   - Compute the exact number of simultaneous active fires burning nationwide
+     (and regionally) on every calendar day from 1990 to present using an
+     O(N log N) event sweep-line algorithm (+1 on discovery date, -1 on day
+     after fire-out date, cumulative sum over sorted daily index).
+   - Bucket daily concurrency into 5 load tiers (`Low <50`, `Moderate 50-150`,
+     `High 150-300`, `Severe 300-500`, `Extreme 500+`).
+
+5. Control 4 — Physical Fire Weather Severity Index (`WEATHER_SEVERITY_SCORE`):
+   - Combine standardized scores of Max VPD, Max Wind Speed, 30-Day Antecedent
+     Rainfall Deficit, and Elevation into a 0–100 composite physical difficulty
+     index, split into 3 tiers (`Mild`, `Moderate`, `Extreme Fire Weather`).
+
+2.3 PHASE 2: COUNTERFACTUAL EFFICIENCY MODELING (`src/counterfactual_model.py`)
+Instead of relying only on raw ratios (`Days / Acre`), Codex must implement a
+Counterfactual Baseline Framework:
+
+1. Define Baseline Era (1990–2005) and Modern Era (2015–present).
+2. Train two Gradient Boosted Regressors on the 1990–2005 Baseline Era to
+   predict `SUPP_DAYS`:
+   - `Model_Naive`: Uses only `log(TOTALACRES)`, Latitude, Longitude, and Day of Year.
+   - `Model_Full_Control`: Uses `log(TOTALACRES)`, Coordinates, Day of Year,
+     Ignition Cause, WUI Distance, `CONCURRENT_FIRES`, VPD, Wind Speed, 30-Day
+     Drought Deficit, and Elevation.
+3. Apply both baseline models to all fires from 1990 to present and calculate:
+   - `EFFICIENCY_DEFICIT_DAYS = Actual SUPP_DAYS - Expected SUPP_DAYS (1990s Model)`
+4. Attribution Decomposition:
+   - Compare the deficit from `Model_Naive` vs. `Model_Full_Control` to quantify
+     exactly what percentage of modern suppression slowdown is explained by:
+     (a) Hotter/drier fire weather (VPD/wind/drought),
+     (b) Higher simultaneous fire concurrency (resource bottlenecks),
+     (c) Wilderness "let-burn" policy shifts, versus
+     (d) Unexplained operational slowdown.
+5. Train a parallel Modern Era Regressor (2015–present) and serialize all models
+   so users can run live counterfactual comparisons in the dashboard.
+
+2.4 PHASE 3: INTERACTIVE VISUALIZATION SUITE (`app.py`)
+Codex must build a cohesive, dark-mode Streamlit dashboard organized around
+answering the research question step-by-step:
+
+[GLOBAL SIDEBAR: CONFOUNDER ISOLATION CONTROLS]
+- Filters for Ignition Cause (Human vs. Lightning), Fire Size Class, Physical
+  Weather Tier (Mild/Moderate/Extreme), Geographic Scope (National, California,
+  Pacific NW/Rockies), Statistical Aggregation (Median P50, Operational Drag P75,
+  Tail Risk P90, or Mean), and Year Range.
+
+[TOP ROW: EXECUTIVE KPI CARDS]
+- Total Fires Analyzed, Initial Attack Containment Rate (<=3 Days), Selected
+  Percentile Suppression Duration, Weather-Controlled Efficiency Deficit vs.
+  1990s Baseline (in +/- Days), and Mean Atmospheric Aridity (VPD).
+
+[VISUALIZATION PANEL 1: THE SIZE- & WEATHER-CONTROLLED PROOF]
+- Multi-line time-series chart tracking suppression duration (P50/P75/P90) across
+  5-year eras inside each fixed Acreage Bucket while holding Weather Tier and
+  Cause constant.
+- Key Insight to Highlight: Routine small fires (<10 acres) are put out just as
+  fast today as in 1990; slowdowns occur specifically when fires escape initial
+  attack into Medium/Large tiers.
+
+[VISUALIZATION PANEL 2: THE INFRASTRUCTURE BREAKING POINT (CONCURRENCY CURVE)]
+- Line/area chart with National Concurrent Active Fires on the X-axis and
+  Initial Attack Escape Rate (or P75 Suppression Days) on the Y-axis, stratified
+  by Decade (1990s, 2000s, 2010s, 2020s).
+- Key Insight to Highlight: Identifies the exact national concurrency inflection
+  point where firefighting crews and aircraft become rationed.
+
+[VISUALIZATION PANEL 3: ATTRIBUTION WATERFALL / DECOMPOSITION CHART]
+- A breakdown visualization showing why average suppression time increased from
+  the 1990s to the 2020s: decomposing the total increase in days into Size
+  Growth, Wilderness Policy ("Let-Burn"), Weather/VPD Difficulty, Concurrency
+  Strain, and True Residual Lag.
+
+[VISUALIZATION PANEL 4: THE BILLION-DOLLAR PARADOX (NIFC COST VS. EFFICIENCY)]
+- Dual-axis chart comparing annual inflation-adjusted Federal Suppression
+  Expenditures (bars) against Weather-Controlled Efficiency Deficit Days (line).
+
+[VISUALIZATION PANEL 5: 3D GEOSPATIAL BOTTLENECK MAP & DE-SKEWED PATH PLOT]
+- Side-by-side view:
+  * Left: PyDeck 3D Hexagon Map where height represents regional fire volume
+    and color represents mean `EFFICIENCY_DEFICIT_DAYS` (pinpointing which USFS
+    regions suffer the worst modern resource bottlenecks).
+  * Right: Upgraded interactive version of the original PreFIRE Path Plot
+    (5-year rolling Acreage vs. Suppression Days) that dynamically flattens or
+    steepens as judges toggle Megafires and Lightning fires on and off.
+
+[BOTTOM MODULE: LIVE COUNTERFACTUAL STRESS-TEST SIMULATOR]
+- Interactive sliders allowing judges to configure a hypothetical wildfire
+  (Acreage, National Concurrency Load, VPD Aridity, Wind Speed, Region, and
+  Ignition Cause) and compare side-by-side:
+  1. Expected Suppression Time under 1990–2005 Capability
+  2. Expected Suppression Time under 2015–2026 System
+  3. Net Weather- & Concurrency-Adjusted Difference
+
+2.5 EXECUTION & QA CHECKLIST FOR CODEX
+1. Build and run the fallback data generator first so the pipeline and UI are
+   verified end-to-end before external data finishes downloading.
+2. Once `data/raw_fofl.parquet` is populated by Grok Bot, re-run the pipeline
+   to update `data/processed_fofl.parquet` and trained model artifacts.
+3. Cache all data loads (`st.cache_data`) and model loads (`st.cache_resource`)
+   so sidebar filter interactions render in under 300 milliseconds.
+================================================================================
+
+```

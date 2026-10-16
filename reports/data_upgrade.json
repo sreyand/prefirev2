@@ -1,0 +1,620 @@
+{
+  "status": "acquired_and_validated_separate_operational_dataset",
+  "created_utc": "2026-10-15T00:45:32.226651+00:00",
+  "source": {
+    "name": "All-hazards dataset mined from the US National Incident Management System 1999-2020",
+    "version": 3,
+    "doi": "10.6084/m9.figshare.19858927.v3",
+    "landing_page": "https://figshare.com/articles/dataset/19858927/3",
+    "metadata_api": "https://api.figshare.com/v2/articles/19858927/versions/3",
+    "methods_paper": "https://doi.org/10.1038/s41597-023-01955-0",
+    "license": {
+      "value": 1,
+      "name": "CC BY 4.0",
+      "url": "https://creativecommons.org/licenses/by/4.0/"
+    },
+    "attribution": "St. Denis, Short, McConnell, Cook, Buckland, Mietkiewicz and Balch; ICS-209-PLUS v3 (2023)."
+  },
+  "source_manifest": [
+    {
+      "path": "data\\raw\\new_sources\\ics209plus-wildfire.zip",
+      "url": "https://ndownloader.figshare.com/files/38766504",
+      "bytes": 48717736,
+      "published_md5": "564b028f2c724ab7855f95bbaca74683",
+      "sha256": "a17c08ede2824e9002fcda112301793c9e59ce1f7ed7eb1e16a762be85ade30f"
+    },
+    {
+      "path": "data\\raw\\new_sources\\ics209plus-reference.zip",
+      "url": "https://ndownloader.figshare.com/files/38766492",
+      "bytes": 88397,
+      "published_md5": "5fec186428418aa28b4c8b2d5fb0e38d",
+      "sha256": "62fca120a613eab592829c45f2a54b305e8953ba06f482fd0c792a13a70a2ece"
+    },
+    {
+      "path": "data\\raw\\new_sources\\ics209plus_v3\\ics209-plus-wf_sitreps_1999to2020.csv",
+      "bytes": 308225416,
+      "sha256": "07189d616863dc6d6d7a2828aa95949479c01617b71a2002d94b9bc9ec768370",
+      "source_archive": "ics209plus-wildfire.zip"
+    },
+    {
+      "path": "data\\raw\\new_sources\\ics209plus_v3\\ics209-plus-wf_incidents_1999to2020.csv",
+      "bytes": 28759571,
+      "sha256": "b1061c04b2055fe9a5087d7920f355bb5feff5652eca61877699f903c8b8c131",
+      "source_archive": "ics209plus-wildfire.zip"
+    },
+    {
+      "path": "data\\raw\\new_sources\\ics209plus_v3\\ics209-plus-wf_complex_associations_1999to2020.csv",
+      "bytes": 8233762,
+      "sha256": "c139dad7b16485ce1f81d955d54e43f0630f4c4ad0bace9dd714f58c1e03261f",
+      "source_archive": "ics209plus-wildfire.zip"
+    }
+  ],
+  "raw_counts": {
+    "sitreps": 182826,
+    "incident_summaries": 34622,
+    "complex_association_rows": 4764
+  },
+  "retained": {
+    "incident_types": [
+      "WF",
+      "WFU",
+      "CX"
+    ],
+    "daily_incident_records": 159975,
+    "incident_summaries": 34478,
+    "source_reports_excluded_by_incident_type": 471,
+    "source_reports_excluded_missing_or_rx_incident_summary": 85,
+    "excluded_missing_or_rx_summary_ids": [
+      "2002_CA-AEU-16666_SLY PARK VMP",
+      "2015_2882088_CORNET",
+      "2015_2920368_CLEARWATER/MUNICIPAL COMPLEX"
+    ],
+    "duplicate_or_earlier_same_day_reports_removed": 22295,
+    "first_report_date": "1999-01-05T00:00:00",
+    "last_report_date": "2020-12-31T00:00:00",
+    "nonself_complex_member_edges": 809
+  },
+  "quality": {
+    "daily_personnel_zero": 32732,
+    "daily_personnel_fractional": 26071,
+    "daily_personnel_review_flag": 1,
+    "daily_aerial_review_flag": 2,
+    "summaries_without_retained_daily_reports": 2,
+    "daily_explicit_pct_containment_values": 75426,
+    "daily_containment_units": {
+      "PCT": 82464,
+      "Unspecified": 73231,
+      "MMA": 4280
+    },
+    "max_source_personnel": 400000.0,
+    "max_source_aerial": 840.0
+  },
+  "fpa_linkage": {
+    "method": "Exact official direct/complex join IDs only; no fuzzy matches or old-edition numeric FOD IDs.",
+    "fpa_records_all_years": 2661383,
+    "fpa_records_1999_2020": 1829302,
+    "direct_exact_matches": 35404,
+    "complex_exact_matches": 5148,
+    "unique_fpa_records_with_operational_context": 37236,
+    "fraction_1999_2020_with_context": 0.02035530491958135,
+    "context_records_in_valid_containment_cohort": 28471,
+    "matched_median_final_acres": 300.0,
+    "all_1999_2020_median_final_acres": 0.75,
+    "median_first_report_lag_days": 1.0,
+    "first_report_precedes_fpa_discovery_records": 1464,
+    "negative_lag_note": "Can reflect earlier shared-complex reporting or disagreement between source dates. Inspect before longitudinal alignment; no date corrections were invented.",
+    "by_year": [
+      {
+        "year": 1992,
+        "fpa_records": 67964,
+        "fpa_direct_join_id_present": 0,
+        "direct_exact_matches": 0,
+        "complex_exact_matches": 0,
+        "any_exact_matches": 0,
+        "matched_fraction_all_fires": 0.0
+      },
+      {
+        "year": 1993,
+        "fpa_records": 61975,
+        "fpa_direct_join_id_present": 0,
+        "direct_exact_matches": 0,
+        "complex_exact_matches": 0,
+        "any_exact_matches": 0,
+        "matched_fraction_all_fires": 0.0
+      },
+      {
+        "year": 1994,
+        "fpa_records": 75932,
+        "fpa_direct_join_id_present": 0,
+        "direct_exact_matches": 0,
+        "complex_exact_matches": 0,
+        "any_exact_matches": 0,
+        "matched_fraction_all_fires": 0.0
+      },
+      {
+        "year": 1995,
+        "fpa_records": 71441,
+        "fpa_direct_join_id_present": 0,
+        "direct_exact_matches": 0,
+        "complex_exact_matches": 0,
+        "any_exact_matches": 0,
+        "matched_fraction_all_fires": 0.0
+      },
+      {
+        "year": 1996,
+        "fpa_records": 75572,
+        "fpa_direct_join_id_present": 0,
+        "direct_exact_matches": 0,
+        "complex_exact_matches": 0,
+        "any_exact_matches": 0,
+        "matched_fraction_all_fires": 0.0
+      },
+      {
+        "year": 1997,
+        "fpa_records": 61449,
+        "fpa_direct_join_id_present": 0,
+        "direct_exact_matches": 0,
+        "complex_exact_matches": 0,
+        "any_exact_matches": 0,
+        "matched_fraction_all_fires": 0.0
+      },
+      {
+        "year": 1998,
+        "fpa_records": 68377,
+        "fpa_direct_join_id_present": 0,
+        "direct_exact_matches": 0,
+        "complex_exact_matches": 0,
+        "any_exact_matches": 0,
+        "matched_fraction_all_fires": 0.0
+      },
+      {
+        "year": 1999,
+        "fpa_records": 89383,
+        "fpa_direct_join_id_present": 894,
+        "direct_exact_matches": 868,
+        "complex_exact_matches": 240,
+        "any_exact_matches": 887,
+        "matched_fraction_all_fires": 0.009923587259322242
+      },
+      {
+        "year": 2000,
+        "fpa_records": 96507,
+        "fpa_direct_join_id_present": 1298,
+        "direct_exact_matches": 1239,
+        "complex_exact_matches": 267,
+        "any_exact_matches": 1285,
+        "matched_fraction_all_fires": 0.013315096314256997
+      },
+      {
+        "year": 2001,
+        "fpa_records": 87066,
+        "fpa_direct_join_id_present": 1026,
+        "direct_exact_matches": 997,
+        "complex_exact_matches": 114,
+        "any_exact_matches": 1020,
+        "matched_fraction_all_fires": 0.011715250499620977
+      },
+      {
+        "year": 2002,
+        "fpa_records": 76196,
+        "fpa_direct_join_id_present": 1106,
+        "direct_exact_matches": 1073,
+        "complex_exact_matches": 188,
+        "any_exact_matches": 1098,
+        "matched_fraction_all_fires": 0.01441020526011864
+      },
+      {
+        "year": 2003,
+        "fpa_records": 68367,
+        "fpa_direct_join_id_present": 1366,
+        "direct_exact_matches": 1312,
+        "complex_exact_matches": 357,
+        "any_exact_matches": 1358,
+        "matched_fraction_all_fires": 0.01986338438135358
+      },
+      {
+        "year": 2004,
+        "fpa_records": 69414,
+        "fpa_direct_join_id_present": 985,
+        "direct_exact_matches": 971,
+        "complex_exact_matches": 131,
+        "any_exact_matches": 981,
+        "matched_fraction_all_fires": 0.014132595729968018
+      },
+      {
+        "year": 2005,
+        "fpa_records": 92992,
+        "fpa_direct_join_id_present": 1662,
+        "direct_exact_matches": 1624,
+        "complex_exact_matches": 239,
+        "any_exact_matches": 1651,
+        "matched_fraction_all_fires": 0.017754215416379903
+      },
+      {
+        "year": 2006,
+        "fpa_records": 118079,
+        "fpa_direct_join_id_present": 2958,
+        "direct_exact_matches": 2876,
+        "complex_exact_matches": 380,
+        "any_exact_matches": 2949,
+        "matched_fraction_all_fires": 0.02497480500342991
+      },
+      {
+        "year": 2007,
+        "fpa_records": 98966,
+        "fpa_direct_join_id_present": 2383,
+        "direct_exact_matches": 2270,
+        "complex_exact_matches": 345,
+        "any_exact_matches": 2365,
+        "matched_fraction_all_fires": 0.023897095972354142
+      },
+      {
+        "year": 2008,
+        "fpa_records": 88422,
+        "fpa_direct_join_id_present": 2245,
+        "direct_exact_matches": 2162,
+        "complex_exact_matches": 365,
+        "any_exact_matches": 2199,
+        "matched_fraction_all_fires": 0.024869376399538578
+      },
+      {
+        "year": 2009,
+        "fpa_records": 81477,
+        "fpa_direct_join_id_present": 1859,
+        "direct_exact_matches": 1829,
+        "complex_exact_matches": 216,
+        "any_exact_matches": 1848,
+        "matched_fraction_all_fires": 0.022681247468610773
+      },
+      {
+        "year": 2010,
+        "fpa_records": 85624,
+        "fpa_direct_join_id_present": 1831,
+        "direct_exact_matches": 1727,
+        "complex_exact_matches": 179,
+        "any_exact_matches": 1826,
+        "matched_fraction_all_fires": 0.02132579650565262
+      },
+      {
+        "year": 2011,
+        "fpa_records": 99204,
+        "fpa_direct_join_id_present": 2868,
+        "direct_exact_matches": 2518,
+        "complex_exact_matches": 396,
+        "any_exact_matches": 2838,
+        "matched_fraction_all_fires": 0.02860771743074876
+      },
+      {
+        "year": 2012,
+        "fpa_records": 74479,
+        "fpa_direct_join_id_present": 1964,
+        "direct_exact_matches": 1713,
+        "complex_exact_matches": 360,
+        "any_exact_matches": 1957,
+        "matched_fraction_all_fires": 0.02627586299493817
+      },
+      {
+        "year": 2013,
+        "fpa_records": 67059,
+        "fpa_direct_join_id_present": 1235,
+        "direct_exact_matches": 1080,
+        "complex_exact_matches": 191,
+        "any_exact_matches": 1231,
+        "matched_fraction_all_fires": 0.01835696923604587
+      },
+      {
+        "year": 2014,
+        "fpa_records": 70997,
+        "fpa_direct_join_id_present": 1263,
+        "direct_exact_matches": 1197,
+        "complex_exact_matches": 134,
+        "any_exact_matches": 1262,
+        "matched_fraction_all_fires": 0.017775398960519457
+      },
+      {
+        "year": 2015,
+        "fpa_records": 78272,
+        "fpa_direct_join_id_present": 2280,
+        "direct_exact_matches": 2029,
+        "complex_exact_matches": 453,
+        "any_exact_matches": 2277,
+        "matched_fraction_all_fires": 0.02909086263286999
+      },
+      {
+        "year": 2016,
+        "fpa_records": 82793,
+        "fpa_direct_join_id_present": 1918,
+        "direct_exact_matches": 1871,
+        "complex_exact_matches": 58,
+        "any_exact_matches": 1905,
+        "matched_fraction_all_fires": 0.02300919159832353
+      },
+      {
+        "year": 2017,
+        "fpa_records": 83030,
+        "fpa_direct_join_id_present": 2077,
+        "direct_exact_matches": 1970,
+        "complex_exact_matches": 287,
+        "any_exact_matches": 2076,
+        "matched_fraction_all_fires": 0.025003010959894014
+      },
+      {
+        "year": 2018,
+        "fpa_records": 81733,
+        "fpa_direct_join_id_present": 1536,
+        "direct_exact_matches": 1497,
+        "complex_exact_matches": 75,
+        "any_exact_matches": 1535,
+        "matched_fraction_all_fires": 0.018780663868939108
+      },
+      {
+        "year": 2019,
+        "fpa_records": 64712,
+        "fpa_direct_join_id_present": 1219,
+        "direct_exact_matches": 1198,
+        "complex_exact_matches": 39,
+        "any_exact_matches": 1219,
+        "matched_fraction_all_fires": 0.01883730992706144
+      },
+      {
+        "year": 2020,
+        "fpa_records": 74530,
+        "fpa_direct_join_id_present": 1472,
+        "direct_exact_matches": 1383,
+        "complex_exact_matches": 134,
+        "any_exact_matches": 1469,
+        "matched_fraction_all_fires": 0.019710183818596537
+      },
+      {
+        "year": 2021,
+        "fpa_records": 77142,
+        "fpa_direct_join_id_present": 1500,
+        "direct_exact_matches": 0,
+        "complex_exact_matches": 0,
+        "any_exact_matches": 0,
+        "matched_fraction_all_fires": 0.0
+      },
+      {
+        "year": 2022,
+        "fpa_records": 97437,
+        "fpa_direct_join_id_present": 1831,
+        "direct_exact_matches": 0,
+        "complex_exact_matches": 0,
+        "any_exact_matches": 0,
+        "matched_fraction_all_fires": 0.0
+      },
+      {
+        "year": 2023,
+        "fpa_records": 87084,
+        "fpa_direct_join_id_present": 1505,
+        "direct_exact_matches": 0,
+        "complex_exact_matches": 0,
+        "any_exact_matches": 0,
+        "matched_fraction_all_fires": 0.0
+      },
+      {
+        "year": 2024,
+        "fpa_records": 87708,
+        "fpa_direct_join_id_present": 1823,
+        "direct_exact_matches": 0,
+        "complex_exact_matches": 0,
+        "any_exact_matches": 0,
+        "matched_fraction_all_fires": 0.0
+      }
+    ]
+  },
+  "outputs": [
+    {
+      "path": "data\\operational_incident_daily.parquet",
+      "rows": 159975,
+      "columns": [
+        "ACRES",
+        "COMPLEX",
+        "CRIT_RES_NEEDS_NARR",
+        "DISCOVERY_DATE",
+        "EST_IM_COST_TO_DATE",
+        "FIRE_EVENT_ID",
+        "IMT_MGMT_ORG_DESC",
+        "INC209R_IDENTIFIER",
+        "INCIDENT_ID",
+        "INCIDENT_NAME",
+        "INCIDENT_NUMBER",
+        "PCT_CONTAINED_COMPLETED",
+        "PCT_CONT_COMPL_UOM_ABBREV",
+        "PERCENT_C",
+        "PERCENT_FS",
+        "PERCENT_M",
+        "PERCENT_PZP",
+        "POO_LATITUDE",
+        "POO_LONGITUDE",
+        "POO_STATE",
+        "REPORT_FROM_DATE",
+        "REPORT_TO_DATE",
+        "START_YEAR",
+        "SUPPRESSION_METHOD",
+        "SUPPRESSION_METHOD_FULLNAME",
+        "TOTAL_AERIAL",
+        "TOTAL_PERSONNEL",
+        "INCTYP_ABBREVIATION",
+        "NEW_ACRES",
+        "REPORT_DAY_SPAN",
+        "REPORT_DATE",
+        "SOURCE_REPORTS_ON_DAY",
+        "PERSONNEL_REVIEW_FLAG",
+        "AERIAL_REVIEW_FLAG",
+        "SOURCE_PERSONNEL_ZERO",
+        "SOURCE_AERIAL_ZERO",
+        "SOURCE_PERSONNEL_FRACTIONAL",
+        "CONTAINMENT_PERCENT_EXPLICIT_PCT",
+        "ASSOCIATED_COMPLEX_IDS",
+        "HAS_COMPLEX_PARENT",
+        "HAS_MAPPED_MEMBERS"
+      ],
+      "bytes": 8013791,
+      "sha256": "e5beba3625716a48d9f0c4e2eedd4240c9fa2918fe695009dc10f6e3ea1e4296"
+    },
+    {
+      "path": "data\\operational_incidents.parquet",
+      "rows": 34478,
+      "columns": [
+        "INCIDENT_ID",
+        "INCIDENT_NAME",
+        "INCIDENT_NUMBER",
+        "START_YEAR",
+        "INCTYP_ABBREVIATION",
+        "COMPLEX",
+        "DISCOVERY_DATE",
+        "FINAL_ACRES",
+        "POO_STATE",
+        "POO_LATITUDE",
+        "POO_LONGITUDE",
+        "FUEL_MODEL",
+        "SUPPRESSION_METHOD",
+        "SUP_METHOD_INITIAL",
+        "SUP_METHOD_FINAL",
+        "SUP_PERCENT_FS",
+        "FIRST_REPORT_DATE",
+        "LAST_REPORT_DATE",
+        "OBSERVED_REPORT_DAYS",
+        "SOURCE_MEDIAN_PERSONNEL",
+        "SOURCE_PEAK_PERSONNEL",
+        "SOURCE_MEDIAN_AERIAL",
+        "SOURCE_PEAK_AERIAL",
+        "PERSONNEL_REVIEW_DAYS",
+        "AERIAL_REVIEW_DAYS",
+        "PERSONNEL_ZERO_REPORT_DAYS",
+        "ASSOCIATED_COMPLEX_IDS",
+        "HAS_COMPLEX_PARENT",
+        "HAS_MAPPED_MEMBERS",
+        "REPORTING_SCOPE"
+      ],
+      "bytes": 2481946,
+      "sha256": "c6f5d7031a4e497fe328a10c0f5ae23fd4de631fe328c7f6c9e654b90b9dc4f7"
+    },
+    {
+      "path": "data\\operational_complex_links.parquet",
+      "rows": 809,
+      "columns": [
+        "CPLX_INCIDENT_ID",
+        "MEMBER_INCIDENT_ID"
+      ],
+      "bytes": 19489,
+      "sha256": "d3f0ff3a4c34028b75c8569267468275cbbd272afa2d2b8407df3508fffb993a"
+    },
+    {
+      "path": "data\\operational_fpa_links.parquet",
+      "rows": 40552,
+      "columns": [
+        "FOD_ID",
+        "FIRE_YEAR",
+        "INCIDENT_ID",
+        "LINK_ROLE"
+      ],
+      "bytes": 896197,
+      "sha256": "3918ea77d5e2813a6f46978664b476bfe037a292ff7ffa0101cf8b4e8587867c"
+    },
+    {
+      "path": "data\\operational_fpa_context.parquet",
+      "rows": 37236,
+      "columns": [
+        "FOD_ID",
+        "FIRE_YEAR",
+        "FIRE_NAME",
+        "FIRE_SIZE",
+        "STATE",
+        "DISCOVERY_DATE",
+        "CONT_DATE",
+        "ICS_209_PLUS_INCIDENT_JOIN_ID",
+        "ICS_209_PLUS_COMPLEX_JOIN_ID",
+        "DIRECT_ICS_MATCH",
+        "COMPLEX_ICS_MATCH",
+        "ANY_ICS_MATCH",
+        "OPERATIONAL_INCIDENT_ID",
+        "OPERATIONAL_LINK_ROLE",
+        "FPA_CONTAINMENT_DATE_PRESENT",
+        "ICS_INCIDENT_NAME",
+        "ICS_INCIDENT_NUMBER",
+        "ICS_START_YEAR",
+        "ICS_INCTYP_ABBREVIATION",
+        "ICS_COMPLEX",
+        "ICS_DISCOVERY_DATE",
+        "ICS_FINAL_ACRES",
+        "ICS_POO_STATE",
+        "ICS_POO_LATITUDE",
+        "ICS_POO_LONGITUDE",
+        "ICS_FUEL_MODEL",
+        "ICS_SUPPRESSION_METHOD",
+        "ICS_SUP_METHOD_INITIAL",
+        "ICS_SUP_METHOD_FINAL",
+        "ICS_SUP_PERCENT_FS",
+        "ICS_FIRST_REPORT_DATE",
+        "ICS_LAST_REPORT_DATE",
+        "ICS_OBSERVED_REPORT_DAYS",
+        "ICS_SOURCE_MEDIAN_PERSONNEL",
+        "ICS_SOURCE_PEAK_PERSONNEL",
+        "ICS_SOURCE_MEDIAN_AERIAL",
+        "ICS_SOURCE_PEAK_AERIAL",
+        "ICS_PERSONNEL_REVIEW_DAYS",
+        "ICS_AERIAL_REVIEW_DAYS",
+        "ICS_PERSONNEL_ZERO_REPORT_DAYS",
+        "ICS_ASSOCIATED_COMPLEX_IDS",
+        "ICS_HAS_COMPLEX_PARENT",
+        "ICS_HAS_MAPPED_MEMBERS",
+        "ICS_REPORTING_SCOPE",
+        "FIRST_REPORT_LAG_DAYS",
+        "FIRST_REPORT_PRECEDES_FPA_DISCOVERY",
+        "IN_VALID_CONTAINMENT_COHORT"
+      ],
+      "bytes": 4212811,
+      "sha256": "a33bd56dcae1f89e914a94e560998c0e455ae9f579387848bcea83c7c463f6fd"
+    }
+  ],
+  "illustrative_examples": {
+    "path": "reports/operational_examples.json",
+    "count": 5,
+    "selection": "reporting coverage and distinct states; not containment outcome"
+  },
+  "join_contract": {
+    "daily_key": [
+      "INCIDENT_ID",
+      "REPORT_DATE"
+    ],
+    "incident_key": [
+      "INCIDENT_ID"
+    ],
+    "fpa_context_key": [
+      "FOD_ID"
+    ],
+    "link_edges_key": [
+      "FOD_ID",
+      "LINK_ROLE",
+      "INCIDENT_ID"
+    ],
+    "resource_units": {
+      "TOTAL_PERSONNEL": "Source incident personnel assignments (may be smoothed); not unique people over time.",
+      "TOTAL_AERIAL": "Source aerial-support resource assignments; not flight hours or available fleet."
+    },
+    "prediction_integration": "Not added to existing model inputs. Use as historical incident-explorer context; temporal/selection analysis is required before predictive use."
+  },
+  "checks": {
+    "published_archive_size_and_md5": true,
+    "daily_key_unique": true,
+    "incident_key_unique": true,
+    "fpa_context_key_unique": true,
+    "prescribed_burns_excluded": true,
+    "raw_csvs_preserved": true
+  },
+  "limitations": [
+    "ICS-209 selects large or otherwise significant incidents; it is not a representative sample of all fires. Coverage is 1999-2020, with reporting changes and gaps especially before 2006.",
+    "TOTAL_PERSONNEL and TOTAL_AERIAL describe incident assignments in source reports. They do not measure available crews, unfilled requests, national workforce capacity, resource shortages, or causal suppression effectiveness.",
+    "ICS-209-PLUS has source cleaning/smoothing and fractional resource values. Source zeros are retained and may include unreported values; missing-resource semantics cannot be recovered from this cleaned release.",
+    "Only an incident's latest source report on each reported calendar day is retained. Gaps are not filled; source report dates have no unified UTC interpretation.",
+    "Complex and member incidents can overlap. Explicit complex relationships are retained; personnel must not be summed across member/complex rows or duplicated FPA links. No national resource total is produced.",
+    "Personnel over 10,000 and aerial resources over 100 are marked for manual review, not silently corrected. These are quality-review thresholds, not physical capacity limits.",
+    "Reports may start after discovery; source incident summaries and resource peaks use later information. They must not be treated as ignition-time features or added to forecasting models without temporal alignment.",
+    "Expected containment and growth cessation are not observed actual containment dates. This acquisition does not invent containment outcomes or alter the existing risk/load models.",
+    "Prescribed-burn (RX) rows remain in the original source CSVs but are excluded from the operational Parquet analysis products. WFU and CX categories are retained and explicitly labeled.",
+    "Critical-resource-needs text is retained as reported and has not been validated or classified into a shortage indicator.",
+    "PCT_CONTAINED_COMPLETED can be reported in PCT, MMA, or unspecified units. The safe containment-percent column is populated only for explicit PCT units with values in 0-100."
+  ]
+}

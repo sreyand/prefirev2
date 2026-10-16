@@ -1,0 +1,8 @@
+{
+  "rows": 1651130,
+  "concurrency_scope": "Only fires with valid reported containment dates and 0\u2013365-day intervals; includes the focal fire.",
+  "concurrency_endpoint": "Containment, not fire-out; not a census of active U.S. wildfires or resource assignments.",
+  "causal_scope": "Final acreage and observed concurrency may be outcomes of suppression itself; they are not guaranteed pre-treatment confounders.",
+  "escape_proxy": "Duration >3 days or final acreage >100 is a descriptive proxy, not verified initial-attack failure.",
+  "size_boundaries": "Left-inclusive bins; 1000 acres belongs to 1000+ acres."
+}

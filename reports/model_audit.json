@@ -1,0 +1,953 @@
+{
+  "protocol": {
+    "classifier_and_quantile_estimators": "fixed original pre-2015 models; no refitting",
+    "calibration_candidate_fit_years": [
+      2020,
+      2021
+    ],
+    "calibration_selection_year": 2022,
+    "selection_criterion": "minimum Brier on2022; raw wins exact ties",
+    "selected_mapping_refit_years": [
+      2020,
+      2021,
+      2022
+    ],
+    "reassessment_years": [
+      2023,
+      2024
+    ],
+    "reassessment_status": "Previously inspected historical years; reassessment only, not untouched evaluation.",
+    "rows": {
+      "candidate_fit": 105633,
+      "selection": 69465,
+      "mapping_refit": 175098,
+      "reassessment": 128797
+    },
+    "support_thresholds": "Reference and threshold query records are disjoint subsets of the original fitting sample; outcome labels never enter support geometry or threshold selection."
+  },
+  "calibration_selection": {
+    "selected_method": "recent_isotonic",
+    "candidate_2022_metrics": {
+      "raw": {
+        "rows": 69465,
+        "events_over_3_days": 1723,
+        "observed_fraction_over_3_days": 0.024803858058014827,
+        "mean_predicted_probability": 0.019679067312316532,
+        "brier_score": 0.022009919104538412,
+        "log_loss": 0.09573011157558498,
+        "roc_auc": 0.8442360934036488,
+        "average_precision": 0.2518815625661365,
+        "expected_calibration_error": 0.012310235751273409
+      },
+      "recent_platt": {
+        "rows": 69465,
+        "events_over_3_days": 1723,
+        "observed_fraction_over_3_days": 0.024803858058014827,
+        "mean_predicted_probability": 0.025674022165186397,
+        "brier_score": 0.021469927715104548,
+        "log_loss": 0.0909780507088588,
+        "roc_auc": 0.8442360934036488,
+        "average_precision": 0.2518815625661365,
+        "expected_calibration_error": 0.004191873305537958
+      },
+      "recent_isotonic": {
+        "rows": 69465,
+        "events_over_3_days": 1723,
+        "observed_fraction_over_3_days": 0.024803858058014827,
+        "mean_predicted_probability": 0.02588590889582067,
+        "brier_score": 0.021260457054043422,
+        "log_loss": 0.09119969926920243,
+        "roc_auc": 0.8431210780213816,
+        "average_precision": 0.23423913669433677,
+        "expected_calibration_error": 0.0045738494994520635
+      }
+    }
+  },
+  "reassessment_metrics": {
+    "raw": {
+      "rows": 128797,
+      "events_over_3_days": 5114,
+      "observed_fraction_over_3_days": 0.039705893770817645,
+      "mean_predicted_probability": 0.02605756808535858,
+      "brier_score": 0.03599984287162675,
+      "log_loss": 0.16324275426431348,
+      "roc_auc": 0.7743103109883922,
+      "average_precision": 0.23831516659148422,
+      "expected_calibration_error": 0.024791342679606917,
+      "same_calendar_day_fraction": 0.8592746725467209,
+      "median_mae_days": 0.7186151572072611,
+      "constant_zero_mae_days": 0.7736593243631451,
+      "interval_coverage": 0.9086779971583189,
+      "mean_interval_width_days": 1.0016239401694582,
+      "fraction_at_or_below_p90": 0.9092214880781385,
+      "fraction_below_p10": 0.000543490919819561,
+      "fraction_above_p90": 0.09077851192186154,
+      "risk_median_disagreement_fraction": 0.007251721701592428
+    },
+    "old_platt": {
+      "rows": 128797,
+      "events_over_3_days": 5114,
+      "observed_fraction_over_3_days": 0.039705893770817645,
+      "mean_predicted_probability": 0.03934347239757832,
+      "brier_score": 0.03858458074054583,
+      "log_loss": 0.16193619312834673,
+      "roc_auc": 0.7743103109883922,
+      "average_precision": 0.23831516659148422,
+      "expected_calibration_error": 0.02477790757706578,
+      "same_calendar_day_fraction": 0.8592746725467209,
+      "median_mae_days": 0.7186151572072611,
+      "constant_zero_mae_days": 0.7736593243631451,
+      "interval_coverage": 0.9086779971583189,
+      "mean_interval_width_days": 1.0016239401694582,
+      "fraction_at_or_below_p90": 0.9092214880781385,
+      "fraction_below_p10": 0.000543490919819561,
+      "fraction_above_p90": 0.09077851192186154,
+      "risk_median_disagreement_fraction": 0.013765848583429737
+    },
+    "audited_selected": {
+      "rows": 128797,
+      "events_over_3_days": 5114,
+      "observed_fraction_over_3_days": 0.039705893770817645,
+      "mean_predicted_probability": 0.03144056964180662,
+      "brier_score": 0.03426150859447554,
+      "log_loss": 0.14669714753382754,
+      "roc_auc": 0.7736566117240103,
+      "average_precision": 0.22460759579988476,
+      "expected_calibration_error": 0.013418202789284068,
+      "same_calendar_day_fraction": 0.8592746725467209,
+      "median_mae_days": 0.7186151572072611,
+      "constant_zero_mae_days": 0.7736593243631451,
+      "interval_coverage": 0.9086779971583189,
+      "mean_interval_width_days": 1.0016239401694582,
+      "fraction_at_or_below_p90": 0.9092214880781385,
+      "fraction_below_p10": 0.000543490919819561,
+      "fraction_above_p90": 0.09077851192186154,
+      "risk_median_disagreement_fraction": 0.005667833878118279
+    }
+  },
+  "support": {
+    "definition": "Exact STATE+agency+cause context; Euclidean 10th-neighbor distance after robust IQR scaling, cyclic season, and log1p load/wind/rain/place distance. Thresholds use disjoint pre-2015 fitting records without outcomes.",
+    "reference_rows": 100000,
+    "threshold_rows": 20000,
+    "contexts": 451,
+    "contexts_with_local_thresholds": 79,
+    "pooled_thresholds": {
+      "p90": 1.3560066614540147,
+      "p99": 2.022081292012378
+    },
+    "reassessment_rows": 128797,
+    "reassessment_status_counts": {
+      "supported": 65900,
+      "unsupported": 33571,
+      "caution": 29326
+    },
+    "reassessment_presentation_allowed_fraction": 0.7393495190105359,
+    "reassessment_metrics_by_support": {
+      "supported": {
+        "rows": 65900,
+        "events_over_3_days": 2151,
+        "observed_fraction_over_3_days": 0.032640364188163885,
+        "mean_predicted_probability": 0.02940797296168849,
+        "brier_score": 0.03165676530469237,
+        "log_loss": 0.14019041049246456,
+        "roc_auc": 0.7322762937534414,
+        "average_precision": 0.1092664752281263,
+        "expected_calibration_error": 0.01673366067810263,
+        "same_calendar_day_fraction": 0.8573596358118362,
+        "median_mae_days": 0.5783187642430346,
+        "constant_zero_mae_days": 0.5868892261001517,
+        "interval_coverage": 0.9070864946889227,
+        "mean_interval_width_days": 0.8714844113706994,
+        "fraction_at_or_below_p90": 0.9073899848254932,
+        "fraction_below_p10": 0.00030349013657056146,
+        "fraction_above_p90": 0.09261001517450683
+      },
+      "caution": {
+        "rows": 29326,
+        "events_over_3_days": 1532,
+        "observed_fraction_over_3_days": 0.05224033281047535,
+        "mean_predicted_probability": 0.039838126699555367,
+        "brier_score": 0.04097725478619254,
+        "log_loss": 0.1684374884449769,
+        "roc_auc": 0.803937223898841,
+        "average_precision": 0.3312091890433132,
+        "expected_calibration_error": 0.014187790905841557,
+        "same_calendar_day_fraction": 0.835538430062061,
+        "median_mae_days": 0.9397446606753389,
+        "constant_zero_mae_days": 1.0765191297824457,
+        "interval_coverage": 0.8999522607924708,
+        "mean_interval_width_days": 1.404955893495865,
+        "fraction_at_or_below_p90": 0.9007706472072564,
+        "fraction_below_p10": 0.0008183864147855146,
+        "fraction_above_p90": 0.09922935279274364
+      },
+      "unsupported": {
+        "rows": 33571,
+        "events_over_3_days": 1431,
+        "observed_fraction_over_3_days": 0.042626076077566945,
+        "mean_predicted_probability": 0.028094865401368317,
+        "brier_score": 0.03350807884792102,
+        "log_loss": 0.14047858786820708,
+        "roc_auc": 0.8051009146305668,
+        "average_precision": 0.3416087263869532,
+        "expected_calibration_error": 0.014556789884843145,
+        "same_calendar_day_fraction": 0.8837687289624974,
+        "median_mae_days": 0.8008494808091098,
+        "constant_zero_mae_days": 0.8757260730988056,
+        "interval_coverage": 0.9194245032915314,
+        "mean_interval_width_days": 0.9047570635374849,
+        "fraction_at_or_below_p90": 0.9201989812635906,
+        "fraction_below_p10": 0.0007744779720592178,
+        "fraction_above_p90": 0.07980101873640941
+      }
+    }
+  },
+  "supported_examples": [
+    {
+      "label": "Common small recorded fire: CA, FS, 0.1 acres",
+      "features": {
+        "LOG_ACRES": -2.3025850929940455,
+        "LATITUDE": 39.66166667,
+        "LONGITUDE": -120.12,
+        "DAY_OF_YEAR": 225.0,
+        "OBSERVED_UNCONTAINED_FIRES": 507.0,
+        "vapour_pressure_deficit_max": 4.89,
+        "wind_speed_10m_max": 11.0,
+        "ANTECEDENT_PRECIP_30D_MM": 0.1,
+        "DISTANCE_TO_PLACE_CENTROID_KM": 8.437289349988474,
+        "STATE": "CA",
+        "NWCG_REPORTING_AGENCY": "FS",
+        "NWCG_CAUSE_CLASSIFICATION": "Natural"
+      },
+      "source_year": 1996,
+      "source_fod_id": 89128,
+      "support": {
+        "status": "supported",
+        "context_reference_count": 1641,
+        "kth_distance": 0.3742172320578145,
+        "thresholds": {
+          "caution_p90": 1.1292762938595262,
+          "unsupported_p99": 1.7662270434672185,
+          "source": "context-specific disjoint fitting records",
+          "k": 10,
+          "min_context_records": 30
+        },
+        "presentation_allowed": true,
+        "reason": "Comparable earlier fires exist within the training-derived neighborhood threshold; this does not guarantee accuracy."
+      },
+      "conditional_support": {
+        "status": "supported",
+        "context_reference_count": 1024,
+        "kth_distance": 0.6614090373382854,
+        "thresholds": {
+          "caution_p90": 1.186652376856339,
+          "unsupported_p99": 1.4428663501771213,
+          "source": "context-specific disjoint fitting records",
+          "k": 10,
+          "min_context_records": 30
+        },
+        "presentation_allowed": true,
+        "reason": "Comparable earlier fires exist within the training-derived neighborhood threshold; this does not guarantee accuracy."
+      },
+      "conditional_presentation_allowed": true
+    },
+    {
+      "label": "Common small recorded fire: ID, FS, 0.1 acres",
+      "features": {
+        "LOG_ACRES": -2.3025850929940455,
+        "LATITUDE": 46.62388889,
+        "LONGITUDE": -115.55722222,
+        "DAY_OF_YEAR": 231.0,
+        "OBSERVED_UNCONTAINED_FIRES": 542.0,
+        "vapour_pressure_deficit_max": 2.24,
+        "wind_speed_10m_max": 11.7,
+        "ANTECEDENT_PRECIP_30D_MM": 26.000000000000004,
+        "DISTANCE_TO_PLACE_CENTROID_KM": 23.628315477101836,
+        "STATE": "ID",
+        "NWCG_REPORTING_AGENCY": "FS",
+        "NWCG_CAUSE_CLASSIFICATION": "Natural"
+      },
+      "source_year": 2004,
+      "source_fod_id": 169146,
+      "support": {
+        "status": "supported",
+        "context_reference_count": 1595,
+        "kth_distance": 0.34678340546415104,
+        "thresholds": {
+          "caution_p90": 1.0219026924268781,
+          "unsupported_p99": 1.5716244408817444,
+          "source": "context-specific disjoint fitting records",
+          "k": 10,
+          "min_context_records": 30
+        },
+        "presentation_allowed": true,
+        "reason": "Comparable earlier fires exist within the training-derived neighborhood threshold; this does not guarantee accuracy."
+      },
+      "conditional_support": {
+        "status": "supported",
+        "context_reference_count": 2296,
+        "kth_distance": 0.48478429399397777,
+        "thresholds": {
+          "caution_p90": 0.8685919554850831,
+          "unsupported_p99": 1.4413514523356097,
+          "source": "context-specific disjoint fitting records",
+          "k": 10,
+          "min_context_records": 30
+        },
+        "presentation_allowed": true,
+        "reason": "Comparable earlier fires exist within the training-derived neighborhood threshold; this does not guarantee accuracy."
+      },
+      "conditional_presentation_allowed": true
+    },
+    {
+      "label": "Larger recorded fire: ID, BLM, 1.7e+03 acres",
+      "features": {
+        "LOG_ACRES": 7.451241684987676,
+        "LATITUDE": 42.40378,
+        "LONGITUDE": -115.0855,
+        "DAY_OF_YEAR": 216.0,
+        "OBSERVED_UNCONTAINED_FIRES": 610.0,
+        "vapour_pressure_deficit_max": 4.68,
+        "wind_speed_10m_max": 25.1,
+        "ANTECEDENT_PRECIP_30D_MM": 2.399999999999997,
+        "DISTANCE_TO_PLACE_CENTROID_KM": 21.815842721467636,
+        "STATE": "ID",
+        "NWCG_REPORTING_AGENCY": "BLM",
+        "NWCG_CAUSE_CLASSIFICATION": "Natural"
+      },
+      "source_year": 2011,
+      "source_fod_id": 201108506,
+      "support": {
+        "status": "supported",
+        "context_reference_count": 306,
+        "kth_distance": 0.9577732125540266,
+        "thresholds": {
+          "caution_p90": 1.5113848671030428,
+          "unsupported_p99": 2.368107296495156,
+          "source": "context-specific disjoint fitting records",
+          "k": 10,
+          "min_context_records": 30
+        },
+        "presentation_allowed": true,
+        "reason": "Comparable earlier fires exist within the training-derived neighborhood threshold; this does not guarantee accuracy."
+      },
+      "conditional_support": {
+        "status": "caution",
+        "context_reference_count": 200,
+        "kth_distance": 0.7899328809720775,
+        "thresholds": {
+          "caution_p90": 1.5869867657603678,
+          "unsupported_p99": 2.4139844672566544,
+          "source": "pooled disjoint fitting records",
+          "k": 10,
+          "min_context_records": 30
+        },
+        "presentation_allowed": true,
+        "reason": "Comparable reference fires exist, but this context has too few disjoint records for its own distance threshold."
+      },
+      "conditional_presentation_allowed": true
+    },
+    {
+      "label": "Larger recorded fire: OK, BIA, 2.2e+03 acres",
+      "features": {
+        "LOG_ACRES": 7.679621214253473,
+        "LATITUDE": 36.3631,
+        "LONGITUDE": -96.5022,
+        "DAY_OF_YEAR": 81.0,
+        "OBSERVED_UNCONTAINED_FIRES": 519.0,
+        "vapour_pressure_deficit_max": 1.33,
+        "wind_speed_10m_max": 19.5,
+        "ANTECEDENT_PRECIP_30D_MM": 68.19999999999996,
+        "DISTANCE_TO_PLACE_CENTROID_KM": 6.396179641814318,
+        "STATE": "OK",
+        "NWCG_REPORTING_AGENCY": "BIA",
+        "NWCG_CAUSE_CLASSIFICATION": "Human"
+      },
+      "source_year": 2014,
+      "source_fod_id": 300022827,
+      "support": {
+        "status": "supported",
+        "context_reference_count": 782,
+        "kth_distance": 0.8676167377004395,
+        "thresholds": {
+          "caution_p90": 1.2558951544582504,
+          "unsupported_p99": 1.7255049609877593,
+          "source": "context-specific disjoint fitting records",
+          "k": 10,
+          "min_context_records": 30
+        },
+        "presentation_allowed": true,
+        "reason": "Comparable earlier fires exist within the training-derived neighborhood threshold; this does not guarantee accuracy."
+      },
+      "conditional_support": {
+        "status": "caution",
+        "context_reference_count": 166,
+        "kth_distance": 0.698498948410605,
+        "thresholds": {
+          "caution_p90": 1.5869867657603678,
+          "unsupported_p99": 2.4139844672566544,
+          "source": "pooled disjoint fitting records",
+          "k": 10,
+          "min_context_records": 30
+        },
+        "presentation_allowed": true,
+        "reason": "Comparable reference fires exist, but this context has too few disjoint records for its own distance threshold."
+      },
+      "conditional_presentation_allowed": true
+    }
+  ],
+  "limitations": [
+    "This is a retrospective conditional model using final acreage, not an operational discovery-time forecast.",
+    "Observed national concurrency is reconstructed from outcome-complete records and includes the focal fire; it is endogenous and is not crew availability or a causal resource constraint.",
+    "2023\u20132024 were inspected in the earlier project. This later comparison is a historical reassessment, not an untouched confirmatory evaluation.",
+    "A calibration mapping chosen on 2022 can still drift in 2023\u20132024 or future years. Subgroup calibration and ranking can differ sharply.",
+    "P10\u2013P90 duration outputs remain fixed exploratory quantiles. Aggregate coverage is distorted by same-day outcomes and does not validate intervals for large or prolonged fires.",
+    "Nearest-neighbor support is a feature-space heuristic using a bounded sample of earlier fitting records. Passing the gate does not establish accuracy, scientific validity, or causal identifiability.",
+    "Exact state, reporting agency, and cause matches plus standardized numeric neighborhoods assess joint support. Regional weather is coarse and cannot represent local fireground conditions."
+  ],
+  "checks": {
+    "chronological_calibration_partition": true,
+    "fixed_classifier_quantile_estimators": true,
+    "support_reference_threshold_queries_disjoint": true,
+    "supported_examples_available": true,
+    "finite_selected_probabilities": true,
+    "bounded_selected_probabilities": true,
+    "serialized_inference_round_trip": true,
+    "unsupported_context_suppresses_presentation": true,
+    "support_grid_within_marginal_ranges": true,
+    "conditional_prolonged_support_gate": true,
+    "fixed_estimators_match_original_artifact_hashes": true,
+    "separate_prolonged_training_support_gate": true
+  },
+  "artifact": "C:\\Users\\Sreyan Das\\Documents\\GitHub\\prefirev2\\models\\risk_bundle_audited.joblib",
+  "groups_csv": "model_audit_groups.csv",
+  "calibration_bins_csv": "model_audit_calibration_bins.csv",
+  "scenario_grid_support": {
+    "rows": 96,
+    "definition": "Fixed grid around one actual small and one actual larger supported case: final acres1/100/10000; independent10th/90th-reference percentiles of VPD, wind, antecedent rain, and observed load. Context and remaining features stay at the recorded case.",
+    "all_individual_numeric_features_within_training_ranges": true,
+    "presentation_allowed_fraction": 0.65625,
+    "unsupported_fraction": 0.34375,
+    "status_counts": {
+      "caution": 49,
+      "unsupported": 33,
+      "supported": 14
+    },
+    "interpretation": "Illustrative stress-grid result, not the proportion of all possible scenarios or actual U.S. fires."
+  },
+  "duration_strata": [
+    {
+      "stratum": "Same calendar day",
+      "rows": 110672,
+      "same_calendar_day_fraction": 1.0,
+      "median_mae_days": 0.04396427575233476,
+      "constant_zero_mae_days": 0.0,
+      "interval_coverage": 0.9993675003614284,
+      "mean_interval_width_days": 0.5522155382355618,
+      "fraction_at_or_below_p90": 1.0,
+      "fraction_below_p10": 0.0006324996385716351,
+      "fraction_above_p90": 0.0
+    },
+    {
+      "stratum": "1\u20133 calendar days",
+      "rows": 13011,
+      "same_calendar_day_fraction": 0.0,
+      "median_mae_days": 1.2436272574500813,
+      "constant_zero_mae_days": 1.377219275997233,
+      "interval_coverage": 0.4320959188379064,
+      "mean_interval_width_days": 1.979254227606163,
+      "fraction_at_or_below_p90": 0.4320959188379064,
+      "fraction_below_p10": 0.0,
+      "fraction_above_p90": 0.5679040811620936
+    },
+    {
+      "stratum": "More than3 calendar days",
+      "rows": 5114,
+      "same_calendar_day_fraction": 0.0,
+      "median_mae_days": 13.9829933183571,
+      "constant_zero_mae_days": 15.98083691826359,
+      "interval_coverage": 0.15858427845131012,
+      "mean_interval_width_days": 8.239985103444633,
+      "fraction_at_or_below_p90": 0.15858427845131012,
+      "fraction_below_p10": 0.0,
+      "fraction_above_p90": 0.8414157215486898
+    }
+  ],
+  "conditional_prolonged_duration": {
+    "conditional_on": "Observed calendar-date containment duration>3days",
+    "training_years": [
+      1992,
+      2014
+    ],
+    "training_rows": 35496,
+    "calibration_years": [
+      2020,
+      2022
+    ],
+    "calibration_rows": 5450,
+    "reassessment_years": [
+      2023,
+      2024
+    ],
+    "reassessment_status": "Historical reassessment of previously inspected years, not untouched confirmation",
+    "nominal_coverage": 0.8,
+    "finite_order_statistic_rank": 4361,
+    "conformal_expansion_days": 0.08971829775969997,
+    "method": "Separate prolonged-only log1p-duration HGB quantiles plus nonnegative finite-rank CQR expansion; lower/upper clipped to4\u2013365calendar days",
+    "tie_break_amplitude_log_days": 1e-06,
+    "seed": 42,
+    "settings": {
+      "max_iter": 140,
+      "learning_rate": 0.07,
+      "max_leaf_nodes": 31,
+      "min_samples_leaf": 80,
+      "l2_regularization": 5,
+      "categorical_features": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        true,
+        true,
+        true
+      ],
+      "early_stopping": true,
+      "n_iter_no_change": 15,
+      "random_state": 42
+    },
+    "calibration_metrics": {
+      "rows": 5450,
+      "median_mae_days": 11.212676015618559,
+      "baseline_median_mae_days": 13.190091743119266,
+      "interval_coverage": 0.8001834862385321,
+      "native_interval_coverage": 0.7256880733944954,
+      "mean_interval_width_days": 26.26152479367654,
+      "median_interval_width_days": 21.351426330992336,
+      "fraction_below_lower": 0.04458715596330275,
+      "fraction_above_upper": 0.15522935779816513,
+      "constant_training_interval_coverage": 0.8807339449541285,
+      "constant_training_interval_width_days": 38.0
+    },
+    "reassessment_metrics": {
+      "rows": 5114,
+      "median_mae_days": 9.351873708079797,
+      "baseline_median_mae_days": 10.46929996089167,
+      "interval_coverage": 0.8013296832225264,
+      "native_interval_coverage": 0.7072741493938209,
+      "mean_interval_width_days": 21.38069572674294,
+      "median_interval_width_days": 16.627611290017033,
+      "fraction_below_lower": 0.02522487289792726,
+      "fraction_above_upper": 0.17344544387954636,
+      "constant_training_interval_coverage": 0.9153304653891279,
+      "constant_training_interval_width_days": 38.0
+    },
+    "baseline_training_median_days": 8.0,
+    "baseline_training_p10_p90_days": [
+      4.0,
+      42.0
+    ],
+    "limitations": [
+      "Conditional on the prolonged event occurring; this is not an unconditional duration forecast.",
+      "Marginal calibration among observed prolonged fires does not guarantee individual, size-specific, or agency-specific coverage.",
+      "Conformal exchangeability across historical years is uncertain; inspect later observed coverage and subgroup widths.",
+      "Final acreage and coarse regional weather remain retrospective inputs; observed load remains endogenous.",
+      "Finite bounds describe the selected0\u2013365day outcome-complete cohort and exclude longer and missing-outcome fires."
+    ],
+    "checks": {
+      "chronological_training_calibration_reassessment": true,
+      "nonnegative_finite_rank_expansion": true,
+      "finite_ordered_conditional_bounds": true,
+      "bounds_4_to_365_calendar_days": true,
+      "original_estimators_and_probability_mapping_unchanged": true,
+      "conditional_support_gate": true,
+      "conditional_serialized_inference": true
+    },
+    "reassessment_groups": {
+      "size": {
+        "10000+ acres": {
+          "rows": 119,
+          "median_mae_days": 20.312893629228427,
+          "baseline_median_mae_days": 33.739495798319325,
+          "interval_coverage": 0.7478991596638656,
+          "native_interval_coverage": 0.7478991596638656,
+          "mean_interval_width_days": 51.59708463902283,
+          "median_interval_width_days": 47.05914837912993,
+          "fraction_below_lower": 0.0504201680672268,
+          "fraction_above_upper": 0.2016806722689075,
+          "constant_training_interval_coverage": 0.5966386554621849,
+          "constant_training_interval_width_days": 38.0,
+          "small_subgroup_warning": true
+        },
+        "1000\u2013<10000 acres": {
+          "rows": 379,
+          "median_mae_days": 17.019065681613313,
+          "baseline_median_mae_days": 23.45382585751979,
+          "interval_coverage": 0.7467018469656992,
+          "native_interval_coverage": 0.7255936675461742,
+          "mean_interval_width_days": 38.762810256341005,
+          "median_interval_width_days": 27.524755059544585,
+          "fraction_below_lower": 0.0290237467018469,
+          "fraction_above_upper": 0.2242744063324538,
+          "constant_training_interval_coverage": 0.7598944591029023,
+          "constant_training_interval_width_days": 38.0,
+          "small_subgroup_warning": false
+        },
+        "100\u2013<1000 acres": {
+          "rows": 757,
+          "median_mae_days": 9.5668683030905,
+          "baseline_median_mae_days": 11.435931307793924,
+          "interval_coverage": 0.7926023778071334,
+          "native_interval_coverage": 0.7410832232496698,
+          "mean_interval_width_days": 23.467016670848004,
+          "median_interval_width_days": 17.378629287466012,
+          "fraction_below_lower": 0.0396301188903566,
+          "fraction_above_upper": 0.1677675033025099,
+          "constant_training_interval_coverage": 0.9088507265521796,
+          "constant_training_interval_width_days": 38.0,
+          "small_subgroup_warning": false
+        },
+        "10\u2013<100 acres": {
+          "rows": 1105,
+          "median_mae_days": 7.3232138755818115,
+          "baseline_median_mae_days": 7.426244343891403,
+          "interval_coverage": 0.8407239819004525,
+          "native_interval_coverage": 0.718552036199095,
+          "mean_interval_width_days": 18.313107458439475,
+          "median_interval_width_days": 15.109542849640786,
+          "fraction_below_lower": 0.0162895927601809,
+          "fraction_above_upper": 0.1429864253393665,
+          "constant_training_interval_coverage": 0.9447963800904976,
+          "constant_training_interval_width_days": 38.0,
+          "small_subgroup_warning": false
+        },
+        "1\u2013<10 acres": {
+          "rows": 1386,
+          "median_mae_days": 7.018357743593315,
+          "baseline_median_mae_days": 7.044733044733045,
+          "interval_coverage": 0.8196248196248196,
+          "native_interval_coverage": 0.7034632034632035,
+          "mean_interval_width_days": 16.59409787465487,
+          "median_interval_width_days": 13.922419928703135,
+          "fraction_below_lower": 0.0259740259740259,
+          "fraction_above_upper": 0.1544011544011544,
+          "constant_training_interval_coverage": 0.9567099567099568,
+          "constant_training_interval_width_days": 38.0,
+          "small_subgroup_warning": false
+        },
+        "<1 acre": {
+          "rows": 1368,
+          "median_mae_days": 10.158119471734436,
+          "baseline_median_mae_days": 10.240497076023392,
+          "interval_coverage": 0.7755847953216374,
+          "native_interval_coverage": 0.6747076023391813,
+          "mean_interval_width_days": 20.10949179216901,
+          "median_interval_width_days": 17.901056083600213,
+          "fraction_below_lower": 0.0204678362573099,
+          "fraction_above_upper": 0.2039473684210526,
+          "constant_training_interval_coverage": 0.9239766081871345,
+          "constant_training_interval_width_days": 38.0,
+          "small_subgroup_warning": false
+        }
+      },
+      "agency": {
+        "BIA": {
+          "rows": 753,
+          "median_mae_days": 6.327043883496739,
+          "baseline_median_mae_days": 5.722443559096946,
+          "interval_coverage": 0.7596281540504648,
+          "native_interval_coverage": 0.6905710491367862,
+          "mean_interval_width_days": 12.901164071761787,
+          "median_interval_width_days": 10.996321932740528,
+          "fraction_below_lower": 0.0053120849933598,
+          "fraction_above_upper": 0.2350597609561753,
+          "constant_training_interval_coverage": 0.9867197875166004,
+          "constant_training_interval_width_days": 38.0,
+          "small_subgroup_warning": false
+        },
+        "BLM": {
+          "rows": 272,
+          "median_mae_days": 8.561075906485621,
+          "baseline_median_mae_days": 8.702205882352942,
+          "interval_coverage": 0.7941176470588235,
+          "native_interval_coverage": 0.7205882352941176,
+          "mean_interval_width_days": 18.090806466683528,
+          "median_interval_width_days": 17.08712225045499,
+          "fraction_below_lower": 0.025735294117647,
+          "fraction_above_upper": 0.1801470588235294,
+          "constant_training_interval_coverage": 0.9411764705882352,
+          "constant_training_interval_width_days": 38.0,
+          "small_subgroup_warning": false
+        },
+        "BOR": {
+          "rows": 1,
+          "median_mae_days": 1.6538592712314912,
+          "baseline_median_mae_days": 3.0,
+          "interval_coverage": 1.0,
+          "native_interval_coverage": 1.0,
+          "mean_interval_width_days": 14.093253859077056,
+          "median_interval_width_days": 14.093253859077056,
+          "fraction_below_lower": 0.0,
+          "fraction_above_upper": 0.0,
+          "constant_training_interval_coverage": 1.0,
+          "constant_training_interval_width_days": 38.0,
+          "small_subgroup_warning": true
+        },
+        "DOD": {
+          "rows": 11,
+          "median_mae_days": 5.746924158636102,
+          "baseline_median_mae_days": 5.181818181818182,
+          "interval_coverage": 0.9090909090909092,
+          "native_interval_coverage": 0.9090909090909092,
+          "mean_interval_width_days": 25.833693449354147,
+          "median_interval_width_days": 23.91100996012973,
+          "fraction_below_lower": 0.0,
+          "fraction_above_upper": 0.0909090909090909,
+          "constant_training_interval_coverage": 1.0,
+          "constant_training_interval_width_days": 38.0,
+          "small_subgroup_warning": true
+        },
+        "DOE": {
+          "rows": 1,
+          "median_mae_days": 12.523464706281928,
+          "baseline_median_mae_days": 11.0,
+          "interval_coverage": 1.0,
+          "native_interval_coverage": 1.0,
+          "mean_interval_width_days": 25.593970273996447,
+          "median_interval_width_days": 25.593970273996447,
+          "fraction_below_lower": 0.0,
+          "fraction_above_upper": 0.0,
+          "constant_training_interval_coverage": 1.0,
+          "constant_training_interval_width_days": 38.0,
+          "small_subgroup_warning": true
+        },
+        "FS": {
+          "rows": 1348,
+          "median_mae_days": 15.19760854927947,
+          "baseline_median_mae_days": 19.198813056379823,
+          "interval_coverage": 0.7618694362017804,
+          "native_interval_coverage": 0.7129080118694362,
+          "mean_interval_width_days": 34.294566506625365,
+          "median_interval_width_days": 26.12567243036637,
+          "fraction_below_lower": 0.0252225519287833,
+          "fraction_above_upper": 0.2129080118694362,
+          "constant_training_interval_coverage": 0.7967359050445104,
+          "constant_training_interval_width_days": 38.0,
+          "small_subgroup_warning": false
+        },
+        "FWS": {
+          "rows": 43,
+          "median_mae_days": 6.914724094244229,
+          "baseline_median_mae_days": 7.0,
+          "interval_coverage": 0.8372093023255814,
+          "native_interval_coverage": 0.7441860465116279,
+          "mean_interval_width_days": 18.250395317882223,
+          "median_interval_width_days": 17.21168629244119,
+          "fraction_below_lower": 0.0232558139534883,
+          "fraction_above_upper": 0.1395348837209302,
+          "constant_training_interval_coverage": 0.9767441860465116,
+          "constant_training_interval_width_days": 38.0,
+          "small_subgroup_warning": true
+        },
+        "NPS": {
+          "rows": 141,
+          "median_mae_days": 13.904824807710376,
+          "baseline_median_mae_days": 16.75177304964539,
+          "interval_coverage": 0.7304964539007093,
+          "native_interval_coverage": 0.6382978723404256,
+          "mean_interval_width_days": 31.12992249710944,
+          "median_interval_width_days": 25.071918923910395,
+          "fraction_below_lower": 0.0425531914893617,
+          "fraction_above_upper": 0.226950354609929,
+          "constant_training_interval_coverage": 0.8368794326241135,
+          "constant_training_interval_width_days": 38.0,
+          "small_subgroup_warning": true
+        },
+        "ST/C&L": {
+          "rows": 2507,
+          "median_mae_days": 7.096122911925171,
+          "baseline_median_mae_days": 7.229756681292382,
+          "interval_coverage": 0.836059034702832,
+          "native_interval_coverage": 0.7072197846031113,
+          "mean_interval_width_days": 16.90234015844164,
+          "median_interval_width_days": 15.043445186273711,
+          "fraction_below_lower": 0.0307140007977662,
+          "fraction_above_upper": 0.1332269644994016,
+          "constant_training_interval_coverage": 0.9565217391304348,
+          "constant_training_interval_width_days": 38.0,
+          "small_subgroup_warning": false
+        },
+        "TRIBE": {
+          "rows": 37,
+          "median_mae_days": 3.2687044323146544,
+          "baseline_median_mae_days": 3.3783783783783785,
+          "interval_coverage": 0.972972972972973,
+          "native_interval_coverage": 0.8918918918918919,
+          "mean_interval_width_days": 16.335559205602937,
+          "median_interval_width_days": 16.389280623350366,
+          "fraction_below_lower": 0.0,
+          "fraction_above_upper": 0.027027027027027,
+          "constant_training_interval_coverage": 1.0,
+          "constant_training_interval_width_days": 38.0,
+          "small_subgroup_warning": true
+        }
+      },
+      "year": {
+        "2023": {
+          "rows": 2192,
+          "median_mae_days": 8.266535557920541,
+          "baseline_median_mae_days": 9.24133211678832,
+          "interval_coverage": 0.8266423357664233,
+          "native_interval_coverage": 0.728558394160584,
+          "mean_interval_width_days": 20.19865661319316,
+          "median_interval_width_days": 15.98871856969204,
+          "fraction_below_lower": 0.021441605839416,
+          "fraction_above_upper": 0.1519160583941605,
+          "constant_training_interval_coverage": 0.9320255474452556,
+          "constant_training_interval_width_days": 38.0,
+          "small_subgroup_warning": false
+        },
+        "2024": {
+          "rows": 2922,
+          "median_mae_days": 10.166063039068533,
+          "baseline_median_mae_days": 11.390485968514716,
+          "interval_coverage": 0.7823408624229979,
+          "native_interval_coverage": 0.6913073237508556,
+          "mean_interval_width_days": 22.267427327325105,
+          "median_interval_width_days": 17.466502016159573,
+          "fraction_below_lower": 0.028062970568104,
+          "fraction_above_upper": 0.189596167008898,
+          "constant_training_interval_coverage": 0.9028062970568104,
+          "constant_training_interval_width_days": 38.0,
+          "small_subgroup_warning": false
+        }
+      },
+      "support": {
+        "supported": {
+          "rows": 2151,
+          "median_mae_days": 7.571632258972148,
+          "baseline_median_mae_days": 8.289167828916783,
+          "interval_coverage": 0.8251975825197583,
+          "native_interval_coverage": 0.6885169688516969,
+          "mean_interval_width_days": 18.13136549366214,
+          "median_interval_width_days": 15.09496708934995,
+          "fraction_below_lower": 0.0162715016271501,
+          "fraction_above_upper": 0.1585309158530916,
+          "constant_training_interval_coverage": 0.9400278940027894,
+          "constant_training_interval_width_days": 38.0,
+          "small_subgroup_warning": false
+        },
+        "caution": {
+          "rows": 1532,
+          "median_mae_days": 10.237232225278497,
+          "baseline_median_mae_days": 11.964751958224545,
+          "interval_coverage": 0.8100522193211488,
+          "native_interval_coverage": 0.7362924281984334,
+          "mean_interval_width_days": 24.984953848247027,
+          "median_interval_width_days": 19.8129787932356,
+          "fraction_below_lower": 0.0306788511749347,
+          "fraction_above_upper": 0.1592689295039164,
+          "constant_training_interval_coverage": 0.8903394255874674,
+          "constant_training_interval_width_days": 38.0,
+          "small_subgroup_warning": false
+        },
+        "unsupported": {
+          "rows": 1431,
+          "median_mae_days": 11.079986991575357,
+          "baseline_median_mae_days": 12.14535290006988,
+          "interval_coverage": 0.756114605171209,
+          "native_interval_coverage": 0.7044025157232704,
+          "mean_interval_width_days": 22.406262385871187,
+          "median_interval_width_days": 16.933477941477094,
+          "fraction_below_lower": 0.0328441649196366,
+          "fraction_above_upper": 0.2110412299091544,
+          "constant_training_interval_coverage": 0.9049615653389238,
+          "constant_training_interval_width_days": 38.0,
+          "small_subgroup_warning": false
+        }
+      }
+    },
+    "support_gate": {
+      "definition": "PROLONGED-TRAINING COHORT ONLY. Exact STATE+agency+cause context; Euclidean 10th-neighbor distance after robust IQR scaling, cyclic season, and log1p load/wind/rain/place distance. Thresholds use disjoint pre-2015 fitting records without outcomes.",
+      "training_rows": 35496,
+      "reference_rows": 28396,
+      "threshold_rows": 7100,
+      "contexts": 375,
+      "contexts_with_local_thresholds": 34,
+      "minimum_context_reference_records": 30,
+      "k": 10,
+      "cohort_membership": "Conditional training consists of historical duration>3day records; inference uses only features and context, never the scenario's outcome.",
+      "presentation_rule": "Probability requires all-fire support. Conditional duration requires BOTH all-fire and separate prolonged-training support.",
+      "prolonged_reassessment_rows": 5114,
+      "prolonged_reassessment_branch_status_counts": {
+        "unsupported": 2341,
+        "supported": 1464,
+        "caution": 1309
+      },
+      "prolonged_reassessment_both_gates_allowed_fraction": 0.4822057098161909,
+      "unrestricted_prolonged_reassessment_metrics": {
+        "rows": 5114,
+        "median_mae_days": 9.351873708079797,
+        "baseline_median_mae_days": 10.46929996089167,
+        "interval_coverage": 0.8013296832225264,
+        "native_interval_coverage": 0.7072741493938209,
+        "mean_interval_width_days": 21.38069572674294,
+        "median_interval_width_days": 16.627611290017033,
+        "fraction_below_lower": 0.02522487289792726,
+        "fraction_above_upper": 0.17344544387954636,
+        "constant_training_interval_coverage": 0.9153304653891279,
+        "constant_training_interval_width_days": 38.0
+      },
+      "both_gates_allowed_prolonged_reassessment_metrics": {
+        "rows": 2466,
+        "median_mae_days": 10.13536082865013,
+        "baseline_median_mae_days": 11.72830494728305,
+        "interval_coverage": 0.7935928629359287,
+        "native_interval_coverage": 0.7128953771289538,
+        "mean_interval_width_days": 24.137359821077474,
+        "median_interval_width_days": 18.676162537749633,
+        "fraction_below_lower": 0.021897810218978103,
+        "fraction_above_upper": 0.18450932684509327,
+        "constant_training_interval_coverage": 0.897404703974047,
+        "constant_training_interval_width_days": 38.0
+      },
+      "suppressed_prolonged_reassessment_metrics": {
+        "rows": 2648,
+        "median_mae_days": 8.622236533107575,
+        "baseline_median_mae_days": 9.296827794561933,
+        "interval_coverage": 0.8085347432024169,
+        "native_interval_coverage": 0.7020392749244713,
+        "mean_interval_width_days": 18.81350023707943,
+        "median_interval_width_days": 13.929830793294881,
+        "fraction_below_lower": 0.028323262839879154,
+        "fraction_above_upper": 0.16314199395770393,
+        "constant_training_interval_coverage": 0.93202416918429,
+        "constant_training_interval_width_days": 38.0
+      },
+      "all_recent_feature_query": {
+        "eligible_rows": 128797,
+        "queried_rows": 50000,
+        "sampled": true,
+        "seed": 42,
+        "conditional_branch_status_counts": {
+          "unsupported": 35133,
+          "caution": 9683,
+          "supported": 5184
+        },
+        "both_gates_allowed_fraction": 0.28984
+      },
+      "checks": {
+        "separate_reference_and_threshold_records": true,
+        "feature_only_inference_gate": true,
+        "conditional_prediction_models_and_expansion_unchanged": true,
+        "IN_FS_Human_zero_prolonged_context_suppressed": true,
+        "IN_FS_Human_probability_retains_support": true,
+        "default_example_supported_by_both_models": true
+      }
+    }
+  }
+}
